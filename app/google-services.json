@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1065908432225",
+    "project_id": "simpleregistration-a43ff",
+    "storage_bucket": "simpleregistration-a43ff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1065908432225:android:a6c6da1c32e7b47edfa920",
+        "android_client_info": {
+          "package_name": "com.example.simpleregistration"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1065908432225-8a6j3nur367fh47u8f4thfmithq4i695.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCo-o771mz_c309BmDYnMUtv3M5bxyo4rA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1065908432225-8a6j3nur367fh47u8f4thfmithq4i695.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
