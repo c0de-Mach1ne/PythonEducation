@@ -20,25 +20,25 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
         binding = FragmentRegisterBinding.bind(view)
         firebaseAuth = FirebaseAuth.getInstance()
 
-        binding.btnRegistration.setOnClickListener {
-
-            val email = binding.etEmail.text.toString()
-            val pass = binding.etPassword.text.toString()
-            val confirmPass = binding.etConfirmPassword.text.toString()
-
-            if (email.isNotBlank() && pass.isNotBlank()) {
-                if (pass == confirmPass) {
-                    firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
-                        if (it.isSuccessful) {
-                            Toast.makeText(context, "Success!", Toast.LENGTH_SHORT).show()
-                            findNavController().popBackStack()
-                        } else {
-                            Toast.makeText(context, it.exception.toString(), Toast.LENGTH_SHORT)
-                                .show()
-                        }
-                    }
-                }
-            }
-        }
+//        binding.btnRegistration.setOnClickListener {
+//
+//            val email = binding.etEmail.text.toString()
+//            val pass = binding.etPassword.text.toString()
+//            val confirmPass = binding.etConfirmPassword.text.toString()
+//
+//            if (email.isNotBlank() && pass.isNotBlank()) {
+//                if (pass == confirmPass) {
+//                    firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
+//                        if (it.isSuccessful) {
+//                            Toast.makeText(context, "Success!", Toast.LENGTH_SHORT).show()
+//                            findNavController().popBackStack()
+//                        } else {
+//                            Toast.makeText(context, it.exception.toString(), Toast.LENGTH_SHORT)
+//                                .show()
+//                        }
+//                    }
+//                }
+//            }
+//        }
     }
 }

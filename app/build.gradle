@@ -51,7 +51,7 @@ dependencies {
 
     // Firebase
     implementation 'com.google.firebase:firebase-auth:21.1.0'
-    implementation 'com.firebaseui:firebase-ui-auth:7.2.0'
+    implementation 'com.firebaseui:firebase-ui-auth:8.0.2'
 
     // Kotlin
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")

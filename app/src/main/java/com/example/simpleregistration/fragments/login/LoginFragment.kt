@@ -20,26 +20,26 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         binding = FragmentLoginBinding.bind(view)
         firebaseAuth = FirebaseAuth.getInstance()
 
-        binding.btnLogin.setOnClickListener {
+//        binding.btnLogin.setOnClickListener {
+//
+//            val email = binding.etEmail.text.toString()
+//            val pass = binding.etPassword.text.toString()
+//
+//            if (email.isNotBlank() && pass.isNotBlank()) {
+//                firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
+//                    if (it.isSuccessful) {
+//                        Toast.makeText(context, "Success!", Toast.LENGTH_SHORT).show()
+//                        findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+//                    } else {
+//                        Toast.makeText(context, it.exception.toString(), Toast.LENGTH_SHORT)
+//                            .show()
+//                    }
+//                }
+//            }
+//        }
 
-            val email = binding.etEmail.text.toString()
-            val pass = binding.etPassword.text.toString()
-
-            if (email.isNotBlank() && pass.isNotBlank()) {
-                firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
-                    if (it.isSuccessful) {
-                        Toast.makeText(context, "Success!", Toast.LENGTH_SHORT).show()
-                        findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
-                    } else {
-                        Toast.makeText(context, it.exception.toString(), Toast.LENGTH_SHORT)
-                            .show()
-                    }
-                }
-            }
-        }
-
-        binding.btnMoveToReg.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
-        }
+//        binding.btnMoveToReg.setOnClickListener {
+//            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
+//        }
     }
 }
