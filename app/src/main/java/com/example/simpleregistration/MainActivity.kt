@@ -12,22 +12,23 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+    // Choose authentication providers
+    private val providers = arrayListOf(
+        AuthUI.IdpConfig.EmailBuilder().build(),
+    )
+
+    // Create and launch sign-in intent
+    private val signInIntent = AuthUI.getInstance()
+        .createSignInIntentBuilder()
+        .setAvailableProviders(providers)
+        .build()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-
-        // Choose authentication providers
-        val providers = arrayListOf(
-            AuthUI.IdpConfig.EmailBuilder().build(),)
-
-        // Create and launch sign-in intent
-        val signInIntent = AuthUI.getInstance()
-            .createSignInIntentBuilder()
-            .setAvailableProviders(providers)
-            .build()
-
-        signInLauncher.launch(signInIntent)
-
+        binding.btnRegistration.setOnClickListener {
+            signInLauncher.launch(signInIntent)
+        }
         setContentView(binding.root)
     }
 
