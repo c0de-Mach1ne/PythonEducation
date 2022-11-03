@@ -26,10 +26,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+
+        setContentView(binding.root)
+
         binding.btnRegistration.setOnClickListener {
             signInLauncher.launch(signInIntent)
         }
-        setContentView(binding.root)
     }
 
     // See: https://developer.android.com/training/basics/intents/result
