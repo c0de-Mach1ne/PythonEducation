@@ -1,4 +1,4 @@
-package com.example.simpleregistration.fragments.home
+package com.example.simpleregistration
 
 import androidx.fragment.app.Fragment
 import com.example.simpleregistration.R

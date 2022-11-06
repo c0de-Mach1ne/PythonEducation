@@ -6,7 +6,7 @@
     android:layout_marginStart="20dp"
     android:layout_marginEnd="20dp"
     android:layout_height="match_parent"
-    tools:context=".fragments.login.LoginFragment">
+    tools:context=".LoginFragment">
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/etEmail"
@@ -35,7 +35,6 @@
         android:id="@+id/btnLogin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_button"
         android:text="Login"
         android:textSize="18sp"
         android:layout_marginTop="10dp"
@@ -48,7 +47,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_button"
         android:text="New to GYM? Register here"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,11 +1,8 @@
-package com.example.simpleregistration.fragments.register
+package com.example.simpleregistration
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
-import com.example.simpleregistration.R
 import com.example.simpleregistration.databinding.FragmentRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
 
