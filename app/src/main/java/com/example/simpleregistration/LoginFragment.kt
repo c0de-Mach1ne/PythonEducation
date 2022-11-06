@@ -17,6 +17,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         binding = FragmentLoginBinding.bind(view)
         firebaseAuth = FirebaseAuth.getInstance()
 
+
 //        binding.btnLogin.setOnClickListener {
 //
 //            val email = binding.etEmail.text.toString()

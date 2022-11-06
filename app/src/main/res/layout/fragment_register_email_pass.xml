@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_marginStart="20dp"
     android:layout_marginEnd="20dp"
-    tools:context=".LoginFragment">
+    tools:context=".RegisterFragment">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivLogo"
@@ -57,25 +57,34 @@
             android:textColorHint="#616161" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnLogin"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputLayoutConfirmPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Login"
-        android:textSize="18sp"
+        android:hint="Confirm password"
+        android:scrollbarSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/inputLayoutPassword" />
+        app:layout_constraintTop_toBottomOf="@id/inputLayoutPassword"
+        app:passwordToggleEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etConfirmPassword"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textPassword"
+            android:textColorHint="#616161" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnMoveToReg"
+        android:id="@+id/btnRegistration"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Register"
-        android:textSize="18sp"
+        android:layout_marginTop="50dp"
+        android:text="Next step"
+        app:layout_constraintTop_toBottomOf="@id/inputLayoutConfirmPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnLogin" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

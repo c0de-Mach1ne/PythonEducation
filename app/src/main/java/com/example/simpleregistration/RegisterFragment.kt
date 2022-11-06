@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import com.example.simpleregistration.databinding.FragmentRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
 
-class RegisterFragment : Fragment(R.layout.fragment_register) {
+class RegisterFragment : Fragment(R.layout.fragment_register_email_pass) {
 
     private lateinit var binding: FragmentRegisterBinding
     private lateinit var firebaseAuth: FirebaseAuth

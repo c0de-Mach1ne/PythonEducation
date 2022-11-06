@@ -21,7 +21,7 @@
         android:id="@+id/registerFragment"
         android:name="com.example.simpleregistration.RegisterFragment"
         android:label="Registration"
-        tools:layout="@layout/fragment_register" />
+        tools:layout="@layout/fragment_register_email_pass" />
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.simpleregistration.HomeFragment"
