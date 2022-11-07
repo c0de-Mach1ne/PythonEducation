@@ -3,19 +3,24 @@ package com.example.simpleregistration
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import com.example.simpleregistration.databinding.FragmentRegisterBinding
+import androidx.navigation.fragment.findNavController
+import com.example.simpleregistration.databinding.FragmentRegisterEmailPassBinding
 import com.google.firebase.auth.FirebaseAuth
 
-class RegisterFragment : Fragment(R.layout.fragment_register_email_pass) {
+class SignUpFragmentEmailPass : Fragment(R.layout.fragment_register_email_pass) {
 
-    private lateinit var binding: FragmentRegisterBinding
+    private lateinit var binding: FragmentRegisterEmailPassBinding
     private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding = FragmentRegisterBinding.bind(view)
+        binding = FragmentRegisterEmailPassBinding.bind(view)
         firebaseAuth = FirebaseAuth.getInstance()
+
+        binding.btnNextStep.setOnClickListener {
+            findNavController().navigate(R.id.registerFragmentFullName)
+        }
 
 //        binding.btnRegistration.setOnClickListener {
 //

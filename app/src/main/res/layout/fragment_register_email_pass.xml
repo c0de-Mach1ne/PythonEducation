@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_marginStart="20dp"
     android:layout_marginEnd="20dp"
-    tools:context=".RegisterFragment">
+    tools:context=".SignUpFragmentEmailPass">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivLogo"
@@ -78,10 +78,10 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnRegistration"
+        android:id="@+id/btnNextStep"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:text="Next step"
         app:layout_constraintTop_toBottomOf="@id/inputLayoutConfirmPassword"
         app:layout_constraintEnd_toEndOf="parent"
