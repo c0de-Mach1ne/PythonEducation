@@ -7,21 +7,21 @@
 
     <fragment
         android:id="@+id/signInFragment"
-        android:name="com.example.simpleregistration.SingInFragment"
+        android:name="com.example.simpleregistration.auth.signIn.SingInFragment"
         android:label="Sign in"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_sign_in" />
     <fragment
-        android:id="@+id/registerFragmentEmailPass"
-        android:name="com.example.simpleregistration.SignUpFragmentEmailPass"
+        android:id="@+id/signUpFragmentEmailPass"
+        android:name="com.example.simpleregistration.auth.signUp.SignUpFragmentEmailPass"
         android:label="Sign up"
-        tools:layout="@layout/fragment_register_email_pass" />
+        tools:layout="@layout/fragment_sign_up_email_pass" />
     <fragment
-        android:id="@+id/lessonFragment"
-        android:name="com.example.simpleregistration.HomeFragment"
+        android:id="@+id/guidFragment"
+        android:name="com.example.simpleregistration.fragments.guid.GuidFragment"
         android:label="Language guide"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_giud" />
     <fragment
-        android:id="@+id/registerFragmentFullName"
-        android:name="com.example.simpleregistration.SignUpFragmentFullName"
+        android:id="@+id/signUpFragmentFullName"
+        android:name="com.example.simpleregistration.auth.signUp.SignUpFragmentFullName"
         android:label="Sign up" />
 </navigation>
