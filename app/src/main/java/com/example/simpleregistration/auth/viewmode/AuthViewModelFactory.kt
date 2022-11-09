@@ -1,4 +1,4 @@
-package com.example.simpleregistration.auth
+package com.example.simpleregistration.auth.viewmode
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

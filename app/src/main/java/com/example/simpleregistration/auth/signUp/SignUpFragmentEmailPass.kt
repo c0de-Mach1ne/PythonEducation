@@ -11,7 +11,6 @@ import com.google.firebase.auth.FirebaseAuth
 class SignUpFragmentEmailPass : Fragment(R.layout.fragment_sign_up_email_pass) {
 
     private lateinit var binding: FragmentSignUpEmailPassBinding
-    private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

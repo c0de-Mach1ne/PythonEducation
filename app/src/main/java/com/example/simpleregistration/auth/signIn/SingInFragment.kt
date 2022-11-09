@@ -7,15 +7,15 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.simpleregistration.R
-import com.example.simpleregistration.auth.AuthViewModel
-import com.example.simpleregistration.auth.AuthViewModelFactory
+import com.example.simpleregistration.auth.AuthState
+import com.example.simpleregistration.auth.viewmode.AuthViewModel
+import com.example.simpleregistration.auth.viewmode.AuthViewModelFactory
 import com.example.simpleregistration.databinding.FragmentSignInBinding
-import com.example.simpleregistration.repository.AuthRepositoryImpl
 
 class SingInFragment : Fragment(R.layout.fragment_sign_in) {
 
     private lateinit var binding: FragmentSignInBinding
-    private val viewModel by viewModels<AuthViewModel>{
+    private val viewModel by viewModels<AuthViewModel> {
         AuthViewModelFactory()
     }
 
@@ -28,6 +28,7 @@ class SingInFragment : Fragment(R.layout.fragment_sign_in) {
             val pass = binding.etPassword.text.toString()
 
             if (email.isNotBlank() && pass.isNotBlank()) {
+                Toast.makeText(context, "Loading", Toast.LENGTH_SHORT).show()
                 viewModel.signIn(email, pass)
             } else {
                 Toast.makeText(context, "Field cannot be empty", Toast.LENGTH_SHORT).show()
@@ -39,22 +40,17 @@ class SingInFragment : Fragment(R.layout.fragment_sign_in) {
         }
     }
 
-
-
     private fun observableViewModel() {
-        viewModel.isLoading.observe(viewLifecycleOwner) {
-            if (it) {
-                Toast.makeText(context, "Loading", Toast.LENGTH_SHORT).show()
+        viewModel.uiState.observe(viewLifecycleOwner) {
+            when (it) {
+                is AuthState.Success -> {
+                    findNavController().popBackStack()
+                    findNavController().navigate(R.id.guidFragment)
+                }
+                is AuthState.Error -> {
+                    Toast.makeText(context, "${it.mes}", Toast.LENGTH_SHORT).show()
+                }
             }
-        }
-
-        viewModel.errorMes.observe(viewLifecycleOwner) {
-            Toast.makeText(context, "$it", Toast.LENGTH_SHORT).show()
-        }
-
-        viewModel.isSuccess.observe(viewLifecycleOwner) {
-            findNavController().popBackStack()
-            findNavController().navigate(R.id.guidFragment)
         }
     }
 }
