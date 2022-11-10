@@ -38,19 +38,19 @@ class SignUpFragmentEmailPass : Fragment(R.layout.fragment_sign_up_email_pass) {
                 Toast.makeText(context, "Loading", Toast.LENGTH_SHORT).show()
                 viewModel.signUpWithEmailAndPassword(email, pass)
             }
-        } else {
-            Toast.makeText(context, "Field cannot be empty", Toast.LENGTH_SHORT).show()
-        }
+        } else Toast.makeText(context, "Field cannot be empty", Toast.LENGTH_SHORT).show()
     }
 
-    private fun observableViewModel(){
+    private fun observableViewModel() {
         viewModel.uiState.observe(viewLifecycleOwner) {
             when (it) {
                 is AuthState.Success -> navigateToSignUpPersonalInfo()
-                is AuthState.Error -> Toast.makeText(context, "${it.mes}", Toast.LENGTH_SHORT).show()
+                is AuthState.Error -> Toast.makeText(context, "${it.mes}", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
     }
 
-    private fun navigateToSignUpPersonalInfo() = findNavController().navigate(R.id.signUpFragmentFullName)
+    private fun navigateToSignUpPersonalInfo() =
+        findNavController().navigate(R.id.signUpFragmentPersonalInfo)
 }

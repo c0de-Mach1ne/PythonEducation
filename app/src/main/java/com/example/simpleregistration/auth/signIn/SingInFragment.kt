@@ -35,8 +35,12 @@ class SingInFragment : Fragment(R.layout.fragment_sign_in) {
     private fun observableViewModel() {
         viewModel.uiState.observe(viewLifecycleOwner) {
             when (it) {
-                is AuthState.Success -> { navigateToSignIn() }
-                is AuthState.Error -> { Toast.makeText(context, "${it.mes}", Toast.LENGTH_SHORT).show() }
+                is AuthState.Success -> {
+                    navigateToSignIn()
+                }
+                is AuthState.Error -> {
+                    Toast.makeText(context, "${it.mes}", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }
@@ -50,7 +54,8 @@ class SingInFragment : Fragment(R.layout.fragment_sign_in) {
         } else Toast.makeText(context, "Field cannot be empty", Toast.LENGTH_SHORT).show()
     }
 
-    private fun navigateToSignUp() = findNavController().navigate(R.id.signUpFragmentEmailPass)
+    private fun navigateToSignUp() =
+        findNavController().navigate(R.id.signUpFragmentEmailPass)
 
     private fun navigateToSignIn() {
         findNavController().popBackStack()
