@@ -22,6 +22,6 @@
         tools:layout="@layout/fragment_giud" />
     <fragment
         android:id="@+id/signUpFragmentFullName"
-        android:name="com.example.simpleregistration.auth.signUp.SignUpFragmentFullName"
+        android:name="com.example.simpleregistration.auth.signUp.SignUpFragmentPersonalInfo"
         android:label="Sign up" />
 </navigation>

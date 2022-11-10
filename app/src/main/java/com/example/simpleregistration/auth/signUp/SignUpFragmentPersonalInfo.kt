@@ -7,7 +7,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.simpleregistration.R
 import com.example.simpleregistration.databinding.FragmentSignUpFullnameBinding
 
-class SignUpFragmentFullName: Fragment(R.layout.fragment_sign_up_fullname) {
+class SignUpFragmentPersonalInfo: Fragment(R.layout.fragment_sign_up_fullname) {
 
     private lateinit var binding: FragmentSignUpFullnameBinding
 

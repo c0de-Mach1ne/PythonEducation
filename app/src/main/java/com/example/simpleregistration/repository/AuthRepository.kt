@@ -1,9 +1,9 @@
 package com.example.simpleregistration.repository
 
-import com.example.simpleregistration.auth.model.UserAuth
+import com.example.simpleregistration.auth.model.UserSignUp
 
 interface AuthRepository {
-    fun signIn(userAuth: UserAuth)
-    fun signUp(userAuth: UserAuth)
+    fun signIn(userSignIn: UserSignUp)
+    fun signUp(userSignIn: UserSignUp)
     fun isUserAuthenticated()
 }
