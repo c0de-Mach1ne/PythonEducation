@@ -20,6 +20,6 @@ class AuthRepositoryImpl{
 
     fun sign(){
         val database = Firebase.database.reference
-
+        firebaseAuth.currentUser
     }
 }

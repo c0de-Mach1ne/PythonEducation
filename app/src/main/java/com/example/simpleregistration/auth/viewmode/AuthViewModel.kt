@@ -46,5 +46,6 @@ class AuthViewModel(
         patronymic: String,
         isTeacher: Boolean
     ) {
+
     }
 }
