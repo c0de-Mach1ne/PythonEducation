@@ -4,12 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.simpleregistration.auth.AuthState
+import com.example.simpleregistration.auth.model.UserPersonalInfo
 import com.example.simpleregistration.auth.model.UserSignIn
 import com.example.simpleregistration.auth.model.UserSignUp
 import com.example.simpleregistration.repository.AuthRepositoryImpl
 
 class AuthViewModel(
-    private val authRepositoryImpl: AuthRepositoryImpl
+    private val authRepositoryImpl: AuthRepositoryImpl,
 ) : ViewModel() {
 
     private val _uiState = MutableLiveData<AuthState>()
@@ -29,7 +30,7 @@ class AuthViewModel(
         email: String,
         password: String,
     ) {
-        authRepositoryImpl.signUp(
+        authRepositoryImpl.signUpWithEmailAndPass(
             UserSignUp(email, password)
         ).addOnCompleteListener {
             if (it.isSuccessful) {
@@ -44,8 +45,13 @@ class AuthViewModel(
         name: String,
         sureName: String,
         patronymic: String,
-        isTeacher: Boolean
+        isTeacher: Boolean,
     ) {
-
+        authRepositoryImpl.signUpWithPersonalInfo(UserPersonalInfo(
+            name,
+            sureName,
+            patronymic,
+            isTeacher)
+        )
     }
 }
