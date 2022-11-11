@@ -1,8 +1,10 @@
 package com.example.simpleregistration.auth.model
 
 data class UserPersonalInfo(
-    val name: String,
-    val sureName: String,
-    val patronymic: String,
-    val isTeacher: Boolean,
-)
+    val name: String? = null,
+    val sureName: String? = null,
+    val patronymic: String? = null,
+    val isTeacher: Boolean? = null,
+)  {
+
+}
