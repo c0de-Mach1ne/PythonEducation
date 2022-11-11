@@ -55,7 +55,8 @@ class AuthViewModel(
 
     fun checkUser() {
         authRepositoryImpl.getAuthUser()?.addOnSuccessListener {
-            Log.d("TAG", "isTeacher ${it.getValue(UserPersonalInfo::class.java)?.isTeacher} \n")
+            Log.d("TAG", "value ${it.value}")
+            Log.d("TAG", "isTeacher ${it.getValue(UserPersonalInfo::class.java)?.teacherFlag} \n")
             Log.d("TAG", "name ${it.getValue(UserPersonalInfo::class.java)?.name} \n")
             Log.d("TAG", "sureName ${it.getValue(UserPersonalInfo::class.java)?.sureName} \n")
             Log.d("TAG", "patronymic ${it.getValue(UserPersonalInfo::class.java)?.patronymic} \n")

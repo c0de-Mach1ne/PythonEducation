@@ -4,7 +4,5 @@ data class UserPersonalInfo(
     val name: String? = null,
     val sureName: String? = null,
     val patronymic: String? = null,
-    val isTeacher: Boolean? = null,
-)  {
-
-}
+    val teacherFlag: Boolean? = null,
+)

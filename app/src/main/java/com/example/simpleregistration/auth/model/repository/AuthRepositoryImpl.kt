@@ -1,6 +1,5 @@
 package com.example.simpleregistration.auth.model.repository
 
-import android.util.Log
 import com.example.simpleregistration.auth.model.UserPersonalInfo
 import com.example.simpleregistration.auth.model.UserSignIn
 import com.example.simpleregistration.auth.model.UserSignUp
@@ -26,7 +25,7 @@ class AuthRepositoryImpl {
                     name = userPersonalInfo.name,
                     sureName = userPersonalInfo.sureName,
                     patronymic = userPersonalInfo.patronymic,
-                    isTeacher = userPersonalInfo.isTeacher,
+                    teacherFlag = userPersonalInfo.teacherFlag,
                 )
             )
         }
@@ -34,7 +33,7 @@ class AuthRepositoryImpl {
     fun getAuthUser() =
         firebaseAuth.uid?.let {
             db.child("users").child(it).get().addOnSuccessListener { dataSnapshot ->
-                Log.d("TAG", "${dataSnapshot.value}")
+//                Log.d("TAG", "${dataSnapshot.value}")
             }
         }
 }
