@@ -3,28 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/signInFragment">
 
     <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.example.simpleregistration.fragments.login.LoginFragment"
-        android:label="Login"
-        tools:layout="@layout/fragment_login">
-        <action
-            android:id="@+id/action_loginFragment_to_registerFragment"
-            app:destination="@id/registerFragment" />
-        <action
-            android:id="@+id/action_loginFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
+        android:id="@+id/signInFragment"
+        android:name="com.example.simpleregistration.auth.signIn.SingInFragment"
+        android:label="Sign in"
+        tools:layout="@layout/fragment_sign_in" />
     <fragment
-        android:id="@+id/registerFragment"
-        android:name="com.example.simpleregistration.fragments.register.RegisterFragment"
-        android:label="Registration"
-        tools:layout="@layout/fragment_register" />
+        android:id="@+id/signUpFragmentEmailPass"
+        android:name="com.example.simpleregistration.auth.signUp.SignUpFragmentEmailPass"
+        android:label="Sign up"
+        tools:layout="@layout/fragment_sign_up_email_pass" />
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.example.simpleregistration.fragments.home.HomeFragment"
-        android:label="HomeFragment"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/studentFragment"
+        android:name="com.example.simpleregistration.fragments.student.StudentFragment"
+        android:label="Student "
+        tools:layout="@layout/fragment_student" />
+    <fragment
+        android:id="@+id/signUpFragmentPersonalInfo"
+        android:name="com.example.simpleregistration.auth.signUp.SignUpFragmentPersonalInfo"
+        android:label="Sign up"
+        tools:layout="@layout/fragment_sign_up_personal_info" />
+    <fragment
+        android:id="@+id/teacherFragment"
+        android:name="com.example.simpleregistration.fragments.teacher.TeacherFragment"
+        android:label="Teacher"
+        tools:layout="@layout/fragment_teacher" />
 </navigation>

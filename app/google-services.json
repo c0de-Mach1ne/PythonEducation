@@ -1,33 +1,34 @@
 {
   "project_info": {
-    "project_number": "1065908432225",
-    "project_id": "simpleregistration-a43ff",
-    "storage_bucket": "simpleregistration-a43ff.appspot.com"
+    "project_number": "130428991487",
+    "firebase_url": "https://autheducation-13298-default-rtdb.firebaseio.com",
+    "project_id": "autheducation-13298",
+    "storage_bucket": "autheducation-13298.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1065908432225:android:a6c6da1c32e7b47edfa920",
+        "mobilesdk_app_id": "1:130428991487:android:967deeaad0d523a43f59ca",
         "android_client_info": {
           "package_name": "com.example.simpleregistration"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1065908432225-8a6j3nur367fh47u8f4thfmithq4i695.apps.googleusercontent.com",
+          "client_id": "130428991487-lighgnb9ao4klhaq24s9jqgtb8h3bban.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCo-o771mz_c309BmDYnMUtv3M5bxyo4rA"
+          "current_key": "AIzaSyCPoEhFfDNVGRxc1acRDMy-rQkn7entZx8"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1065908432225-8a6j3nur367fh47u8f4thfmithq4i695.apps.googleusercontent.com",
+              "client_id": "130428991487-lighgnb9ao4klhaq24s9jqgtb8h3bban.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
