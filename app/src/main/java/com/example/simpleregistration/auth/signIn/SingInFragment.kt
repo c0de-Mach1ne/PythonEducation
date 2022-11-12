@@ -17,6 +17,12 @@ class SingInFragment : Fragment(R.layout.fragment_sign_in) {
     private lateinit var binding: FragmentSignInBinding
     private val viewModel by viewModels<AuthViewModel> { AuthViewModelFactory() }
 
+    override fun onStart() {
+        super.onStart()
+        Toast.makeText(context, "Loading", Toast.LENGTH_SHORT).show()
+        viewModel.authSignInUser()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -53,7 +59,6 @@ class SingInFragment : Fragment(R.layout.fragment_sign_in) {
             viewModel.signIn(email, pass)
         } else Toast.makeText(context, "Field cannot be empty", Toast.LENGTH_SHORT).show()
     }
-
 
     private fun navigateToSignUp() =
         findNavController().navigate(R.id.signUpFragmentEmailPass)

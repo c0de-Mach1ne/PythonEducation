@@ -1,6 +1,5 @@
 package com.example.simpleregistration.auth.viewmode
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,23 +19,16 @@ class AuthViewModel(
     private val _userRole = MutableLiveData<UserRole>()
     var userRole: LiveData<UserRole> = _userRole
 
-    private fun getUserRole() {
-        authRepositoryImpl.getAuthUser()?.addOnCompleteListener {
-            if (it.isSuccessful) {
-                Log.d("TAG", "${it.result.getValue(UserPersonalInfo::class.java)?.teacherFlag}")
-            }
+    fun authSignInUser() {
+        if (authRepositoryImpl.getAuthUser() != null) {
+            getUserRole()
         }
     }
 
     fun signIn(email: String, pass: String) {
         authRepositoryImpl.signIn(UserSignIn(email, pass)).addOnCompleteListener {
             if (it.isSuccessful) {
-                authRepositoryImpl.getAuthUser()?.addOnCompleteListener { dataSnapshotTask ->
-                    if (dataSnapshotTask.isSuccessful) {
-                        _userRole.value =
-                            UserRole.Success(dataSnapshotTask.result.getValue(UserPersonalInfo::class.java)?.teacherFlag)
-                    }
-                }
+                getUserRole()
             } else _userRole.value = UserRole.Error(mes = it.exception?.message)
         }
     }
@@ -67,6 +59,17 @@ class AuthViewModel(
         )?.addOnCompleteListener {
             if (it.isSuccessful) _uiState.value = AuthState.Success
             else _uiState.value = AuthState.Error(mes = it.exception?.message)
+        }
+    }
+
+
+
+    private fun getUserRole() {
+        authRepositoryImpl.getDatabaseUser()?.addOnCompleteListener { dataSnapshotTask ->
+            if (dataSnapshotTask.isSuccessful) {
+                _userRole.value =
+                    UserRole.Success(dataSnapshotTask.result.getValue(UserPersonalInfo::class.java)?.teacherFlag)
+            }
         }
     }
 }

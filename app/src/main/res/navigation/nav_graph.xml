@@ -17,7 +17,7 @@
         tools:layout="@layout/fragment_sign_up_email_pass" />
     <fragment
         android:id="@+id/studentFragment"
-        android:name="com.example.simpleregistration.fragments.guid.StudentFragment"
+        android:name="com.example.simpleregistration.fragments.student.StudentFragment"
         android:label="Student "
         tools:layout="@layout/fragment_student" />
     <fragment
@@ -27,7 +27,7 @@
         tools:layout="@layout/fragment_sign_up_personal_info" />
     <fragment
         android:id="@+id/teacherFragment"
-        android:name="com.example.simpleregistration.fragments.guid.TeacherFragment"
+        android:name="com.example.simpleregistration.fragments.teacher.TeacherFragment"
         android:label="Teacher"
         tools:layout="@layout/fragment_teacher" />
 </navigation>

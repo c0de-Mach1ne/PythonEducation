@@ -30,8 +30,13 @@ class AuthRepositoryImpl {
             )
         }
 
-    fun getAuthUser() =
+    fun getDatabaseUser() =
         firebaseAuth.uid?.let {
             db.child("users").child(it).get()
         }
+
+    fun getAuthUser() = firebaseAuth.currentUser
+
+    fun signOut() =
+        firebaseAuth.signOut()
 }
