@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.simpleregistration.auth.AuthState
+import com.example.simpleregistration.auth.UserRole
 import com.example.simpleregistration.auth.model.UserPersonalInfo
 import com.example.simpleregistration.auth.model.UserSignIn
 import com.example.simpleregistration.auth.model.UserSignUp
@@ -16,11 +17,27 @@ class AuthViewModel(
 
     private val _uiState = MutableLiveData<AuthState>()
     val uiState: LiveData<AuthState> = _uiState
+    private val _userRole = MutableLiveData<UserRole>()
+    var userRole: LiveData<UserRole> = _userRole
+
+    private fun getUserRole() {
+        authRepositoryImpl.getAuthUser()?.addOnCompleteListener {
+            if (it.isSuccessful) {
+                Log.d("TAG", "${it.result.getValue(UserPersonalInfo::class.java)?.teacherFlag}")
+            }
+        }
+    }
 
     fun signIn(email: String, pass: String) {
         authRepositoryImpl.signIn(UserSignIn(email, pass)).addOnCompleteListener {
-            if (it.isSuccessful) _uiState.value = AuthState.Success
-            else _uiState.value = AuthState.Error(mes = it.exception?.message)
+            if (it.isSuccessful) {
+                authRepositoryImpl.getAuthUser()?.addOnCompleteListener { dataSnapshotTask ->
+                    if (dataSnapshotTask.isSuccessful) {
+                        _userRole.value =
+                            UserRole.Success(dataSnapshotTask.result.getValue(UserPersonalInfo::class.java)?.teacherFlag)
+                    }
+                }
+            } else _userRole.value = UserRole.Error(mes = it.exception?.message)
         }
     }
 
@@ -50,16 +67,6 @@ class AuthViewModel(
         )?.addOnCompleteListener {
             if (it.isSuccessful) _uiState.value = AuthState.Success
             else _uiState.value = AuthState.Error(mes = it.exception?.message)
-        }
-    }
-
-    fun checkUser() {
-        authRepositoryImpl.getAuthUser()?.addOnSuccessListener {
-            Log.d("TAG", "value ${it.value}")
-            Log.d("TAG", "isTeacher ${it.getValue(UserPersonalInfo::class.java)?.teacherFlag} \n")
-            Log.d("TAG", "name ${it.getValue(UserPersonalInfo::class.java)?.name} \n")
-            Log.d("TAG", "sureName ${it.getValue(UserPersonalInfo::class.java)?.sureName} \n")
-            Log.d("TAG", "patronymic ${it.getValue(UserPersonalInfo::class.java)?.patronymic} \n")
         }
     }
 }

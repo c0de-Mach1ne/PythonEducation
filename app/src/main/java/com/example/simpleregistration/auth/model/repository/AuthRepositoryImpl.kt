@@ -32,8 +32,6 @@ class AuthRepositoryImpl {
 
     fun getAuthUser() =
         firebaseAuth.uid?.let {
-            db.child("users").child(it).get().addOnSuccessListener { dataSnapshot ->
-//                Log.d("TAG", "${dataSnapshot.value}")
-            }
+            db.child("users").child(it).get()
         }
 }

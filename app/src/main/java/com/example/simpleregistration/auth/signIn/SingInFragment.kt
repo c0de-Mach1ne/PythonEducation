@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.simpleregistration.R
-import com.example.simpleregistration.auth.AuthState
+import com.example.simpleregistration.auth.UserRole
 import com.example.simpleregistration.auth.viewmode.AuthViewModel
 import com.example.simpleregistration.auth.viewmode.AuthViewModelFactory
 import com.example.simpleregistration.databinding.FragmentSignInBinding
@@ -33,12 +33,12 @@ class SingInFragment : Fragment(R.layout.fragment_sign_in) {
     }
 
     private fun observableViewModel() {
-        viewModel.uiState.observe(viewLifecycleOwner) {
+        viewModel.userRole.observe(viewLifecycleOwner) {
             when (it) {
-                is AuthState.Success -> {
-                    navigateToSignIn()
+                is UserRole.Success -> {
+                    it.userRole?.let { role -> navigateToMainScreen(role) }
                 }
-                is AuthState.Error -> {
+                is UserRole.Error -> {
                     Toast.makeText(context, "${it.mes}", Toast.LENGTH_SHORT).show()
                 }
             }
@@ -54,11 +54,13 @@ class SingInFragment : Fragment(R.layout.fragment_sign_in) {
         } else Toast.makeText(context, "Field cannot be empty", Toast.LENGTH_SHORT).show()
     }
 
+
     private fun navigateToSignUp() =
         findNavController().navigate(R.id.signUpFragmentEmailPass)
 
-    private fun navigateToSignIn() {
+    private fun navigateToMainScreen(userRole: Boolean) {
         findNavController().popBackStack()
-        findNavController().navigate(R.id.guidFragment)
+        if (userRole) findNavController().navigate(R.id.teacherFragment)
+        else findNavController().navigate(R.id.studentFragment)
     }
 }
