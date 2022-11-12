@@ -9,7 +9,16 @@
         android:id="@+id/signInFragment"
         android:name="com.example.simpleregistration.auth.signIn.SingInFragment"
         android:label="Sign in"
-        tools:layout="@layout/fragment_sign_in" />
+        tools:layout="@layout/fragment_sign_in">
+        <action
+            android:id="@+id/action_signInFragment_to_signUpFragmentEmailPass"
+            app:destination="@id/signUpFragmentEmailPass"
+
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
     <fragment
         android:id="@+id/signUpFragmentEmailPass"
         android:name="com.example.simpleregistration.auth.signUp.SignUpFragmentEmailPass"

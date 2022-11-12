@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.example.simpleregistration.R
 import com.example.simpleregistration.auth.UserRole
@@ -17,9 +18,17 @@ class SingInFragment : Fragment(R.layout.fragment_sign_in) {
     private lateinit var binding: FragmentSignInBinding
     private val viewModel by viewModels<AuthViewModel> { AuthViewModelFactory() }
 
+//    private val navOptions by lazy {
+//        NavOptions.Builder()
+//            .setLaunchSingleTop(true)
+//            .setEnterAnim(R.anim.)
+//            .setExitAnim(R.anim.slide_out_left)
+//            .setPopEnterAnim(R.anim.slide_in_left)
+//            .setPopExitAnim(R.anim.slide_out_right)
+//    }
+
     override fun onStart() {
         super.onStart()
-        Toast.makeText(context, "Loading", Toast.LENGTH_SHORT).show()
         viewModel.authSignInUser()
     }
 
@@ -61,7 +70,7 @@ class SingInFragment : Fragment(R.layout.fragment_sign_in) {
     }
 
     private fun navigateToSignUp() =
-        findNavController().navigate(R.id.signUpFragmentEmailPass)
+        findNavController().navigate(R.id.action_signInFragment_to_signUpFragmentEmailPass)
 
     private fun navigateToMainScreen(userRole: Boolean) {
         findNavController().popBackStack()
