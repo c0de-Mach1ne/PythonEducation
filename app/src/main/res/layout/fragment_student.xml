@@ -14,7 +14,7 @@
         android:layout_marginTop="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/shre_signup" />
+        tools:src="@tools:sample/avatars"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvName"
