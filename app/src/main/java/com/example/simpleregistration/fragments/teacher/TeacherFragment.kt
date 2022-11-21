@@ -5,8 +5,8 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.simpleregistration.R
 import com.example.simpleregistration.auth.model.UserPersonalInfo
+import com.example.simpleregistration.R
 import com.example.simpleregistration.databinding.FragmentTeacherBinding
 import com.example.simpleregistration.fragments.UserViewModel
 import com.example.simpleregistration.fragments.UserViewModelFactory
@@ -44,7 +44,7 @@ class TeacherFragment : Fragment(R.layout.fragment_teacher) {
         binding.tvRole.text = userPersonalInfo.teacherFlag.toString()
     }
 
-    private fun signOut(){
+    private fun signOut() {
         viewModel.singOut()
         findNavController().popBackStack()
         findNavController().navigate(R.id.signInFragment)

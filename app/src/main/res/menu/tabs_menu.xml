@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/guid_graph"
+        android:title="Guid"
+        android:icon="@drawable/ic_book"/>
+    <item android:id="@+id/quiz_graph"
+        android:title="Quiz"
+        android:icon="@drawable/ic_book"/>
+    <item android:id="@+id/profile_graph"
+        android:title="Profile"
+        android:icon="@drawable/ic_book"/>
+
+</menu>

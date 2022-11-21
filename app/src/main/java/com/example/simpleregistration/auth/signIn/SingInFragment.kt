@@ -17,11 +17,6 @@ class SingInFragment : Fragment(R.layout.fragment_sign_in) {
     private lateinit var binding: FragmentSignInBinding
     private val viewModel by viewModels<AuthViewModel> { AuthViewModelFactory() }
 
-    override fun onStart() {
-        super.onStart()
-        viewModel.authSignInUser()
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -63,8 +58,6 @@ class SingInFragment : Fragment(R.layout.fragment_sign_in) {
         findNavController().navigate(R.id.action_signInFragment_to_signUpFragmentEmailPass)
 
     private fun navigateToMainScreen(userRole: Boolean) {
-        findNavController().popBackStack()
-        if (userRole) findNavController().navigate(R.id.teacherFragment)
-        else findNavController().navigate(R.id.studentFragment)
+        findNavController().navigate(R.id.action_signInFragment_to_tabsFragment)
     }
 }

@@ -19,11 +19,7 @@ class AuthViewModel(
     private val _userRole = MutableLiveData<UserRole>()
     var userRole: LiveData<UserRole> = _userRole
 
-    fun authSignInUser() {
-        if (authRepositoryImpl.getAuthUser() != null) {
-            getUserRole()
-        }
-    }
+
 
     fun signIn(email: String, pass: String) {
         authRepositoryImpl.signIn(UserSignIn(email, pass)).addOnCompleteListener {

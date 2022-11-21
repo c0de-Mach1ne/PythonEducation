@@ -5,8 +5,8 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.simpleregistration.R
 import com.example.simpleregistration.auth.model.UserPersonalInfo
+import com.example.simpleregistration.R
 import com.example.simpleregistration.databinding.FragmentStudentBinding
 import com.example.simpleregistration.fragments.UserViewModel
 import com.example.simpleregistration.fragments.UserViewModelFactory

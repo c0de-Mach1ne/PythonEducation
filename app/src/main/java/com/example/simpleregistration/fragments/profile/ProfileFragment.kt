@@ -1,0 +1,7 @@
+package com.example.simpleregistration.fragments.profile
+
+import androidx.fragment.app.Fragment
+import com.example.simpleregistration.R
+
+class ProfileFragment: Fragment(R.layout.fragment_profile) {
+}

@@ -1,35 +1,50 @@
 {
   "project_info": {
-    "project_number": "130428991487",
-    "firebase_url": "https://autheducation-13298-default-rtdb.firebaseio.com",
-    "project_id": "autheducation-13298",
-    "storage_bucket": "autheducation-13298.appspot.com"
+    "project_number": "598098377663",
+    "firebase_url": "https://sosnovskiyproject-default-rtdb.firebaseio.com",
+    "project_id": "sosnovskiyproject",
+    "storage_bucket": "sosnovskiyproject.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:130428991487:android:967deeaad0d523a43f59ca",
+        "mobilesdk_app_id": "1:598098377663:android:08282a6792f2cac56b7f0a",
         "android_client_info": {
           "package_name": "com.example.simpleregistration"
         }
       },
       "oauth_client": [
         {
-          "client_id": "130428991487-lighgnb9ao4klhaq24s9jqgtb8h3bban.apps.googleusercontent.com",
+          "client_id": "598098377663-sfapctvrtff1rec9btie5b0g7f46e7m6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.simpleregistration",
+            "certificate_hash": "a3c21d4cdb8e348503a120497646ce5010123193"
+          }
+        },
+        {
+          "client_id": "598098377663-vmfjbef9outdph8b62p61vnsjjlnjnok.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCPoEhFfDNVGRxc1acRDMy-rQkn7entZx8"
+          "current_key": "AIzaSyAzDPE6Abd1j4qfnW5IzHdg4jNat2m9AGM"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "130428991487-lighgnb9ao4klhaq24s9jqgtb8h3bban.apps.googleusercontent.com",
+              "client_id": "598098377663-vmfjbef9outdph8b62p61vnsjjlnjnok.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "598098377663-b04uee7falm9limpcqc9f4nksg5k2r9i.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "kirillProkoptsov.IndividualProjectOOP"
+              }
             }
           ]
         }
