@@ -8,12 +8,12 @@ import androidx.navigation.fragment.findNavController
 import com.example.simpleregistration.auth.model.UserPersonalInfo
 import com.example.simpleregistration.R
 import com.example.simpleregistration.databinding.FragmentTeacherBinding
-import com.example.simpleregistration.fragments.UserViewModel
-import com.example.simpleregistration.fragments.UserViewModelFactory
+import com.example.simpleregistration.fragments.profile.ProfieViewModel
+import com.example.simpleregistration.fragments.profile.ProfileViewModelFactory
 
 class TeacherFragment : Fragment(R.layout.fragment_teacher) {
 
-    private val viewModel by viewModels<UserViewModel> { UserViewModelFactory() }
+    private val viewModel by viewModels<ProfieViewModel> { ProfileViewModelFactory() }
     private lateinit var binding: FragmentTeacherBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

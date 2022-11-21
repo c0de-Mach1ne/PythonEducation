@@ -1,4 +1,4 @@
-package com.example.simpleregistration.fragments
+package com.example.simpleregistration.fragments.profile
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,10 +6,14 @@ import androidx.lifecycle.ViewModel
 import com.example.simpleregistration.auth.model.UserPersonalInfo
 import com.example.simpleregistration.auth.model.repository.AuthRepositoryImpl
 
-class UserViewModel(private val authRepositoryImpl: AuthRepositoryImpl): ViewModel() {
+class ProfieViewModel(private val authRepositoryImpl: AuthRepositoryImpl): ViewModel() {
 
     private val _userData = MutableLiveData<UserPersonalInfo>()
     var userData: LiveData<UserPersonalInfo> = _userData
+
+    init {
+        getUserData()
+    }
 
     fun getUserData(){
         authRepositoryImpl.getDatabaseUser()?.addOnCompleteListener { dataSnapshotTask ->

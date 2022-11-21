@@ -1,14 +1,14 @@
-package com.example.simpleregistration.fragments
+package com.example.simpleregistration.fragments.profile
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.simpleregistration.auth.model.repository.AuthRepositoryImpl
 
-class UserViewModelFactory : ViewModelProvider.Factory {
+class ProfileViewModelFactory : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(UserViewModel::class.java)) {
+        if (modelClass.isAssignableFrom(ProfieViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return UserViewModel(authRepositoryImpl = AuthRepositoryImpl()) as T
+            return ProfieViewModel(authRepositoryImpl = AuthRepositoryImpl()) as T
         }
         throw IllegalArgumentException("UNKNOWN VIEW MODEL CLASS")
     }
