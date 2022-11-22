@@ -38,7 +38,8 @@
         tools:layout="@layout/fragment_sign_up_personal_info" >
         <action
             android:id="@+id/action_signUpFragmentPersonalInfo_to_signInFragment"
-            app:destination="@id/signInFragment" />
+            app:destination="@id/signInFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/tabsFragment"

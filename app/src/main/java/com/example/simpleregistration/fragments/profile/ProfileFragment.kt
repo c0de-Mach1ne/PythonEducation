@@ -37,7 +37,7 @@ class ProfileFragment: Fragment(R.layout.fragment_profile) {
 
     private fun signOut() {
         viewModel.singOut()
-        findNavController().navigate(R.id.action_profileFragment_to_singInFragment)
+        findNavController().navigate(R.id.action_profileFragment_to_main_graph)
     }
 
     private fun observeViewModel() {

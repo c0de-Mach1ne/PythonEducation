@@ -10,12 +10,8 @@
         android:name="com.example.simpleregistration.fragments.profile.ProfileFragment"
         android:label="ProfileFragment" >
         <action
-            android:id="@+id/action_profileFragment_to_singInFragment"
-            app:destination="@id/singInFragment" />
+            android:id="@+id/action_profileFragment_to_main_graph"
+            app:destination="@id/main_graph" />
     </fragment>
-    <fragment
-        android:id="@+id/singInFragment"
-        android:name="com.example.simpleregistration.auth.signIn.SingInFragment"
-        android:label="fragment_sign_in"
-        tools:layout="@layout/fragment_sign_in" />
+    <include app:graph="@navigation/main_graph" />
 </navigation>
