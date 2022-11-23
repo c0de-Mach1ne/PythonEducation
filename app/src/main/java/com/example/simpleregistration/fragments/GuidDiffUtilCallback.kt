@@ -3,7 +3,7 @@ package com.example.simpleregistration.fragments
 import androidx.recyclerview.widget.DiffUtil
 import com.example.simpleregistration.fragments.model.Guid
 
-class ContentDiffUtilCallback : DiffUtil.ItemCallback<Guid>() {
+class GuidDiffUtilCallback : DiffUtil.ItemCallback<Guid>() {
 
     override fun areItemsTheSame(oldItem: Guid, newItem: Guid) = oldItem == newItem
 

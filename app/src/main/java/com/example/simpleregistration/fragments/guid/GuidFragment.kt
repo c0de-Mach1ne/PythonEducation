@@ -9,13 +9,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.simpleregistration.R
 import com.example.simpleregistration.databinding.FragmentContentBinding
-import com.example.simpleregistration.fragments.ContentAdapter
+import com.example.simpleregistration.fragments.GuidAdapter
 
 class GuidFragment: Fragment(R.layout.fragment_content) {
 
     private lateinit var binding: FragmentContentBinding
     private val viewModel by viewModels<GuidViewModel> { GuidViewModelFactory() }
-    private val guidAdapter by lazy { ContentAdapter() }
+    private val adapter by lazy { GuidAdapter() }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,7 +29,7 @@ class GuidFragment: Fragment(R.layout.fragment_content) {
     private fun observeViewModel(){
         viewModel.guidList.observe(viewLifecycleOwner){
             Log.d("TAG", "list size ${it.size}")
-            guidAdapter.submitList(it)
+            adapter.submitList(it)
         }
     }
 
@@ -41,6 +41,6 @@ class GuidFragment: Fragment(R.layout.fragment_content) {
     }
 
     private fun initRecycler() = with(binding) {
-        recyclerView.adapter = guidAdapter
+        recyclerView.adapter = adapter
     }
 }
