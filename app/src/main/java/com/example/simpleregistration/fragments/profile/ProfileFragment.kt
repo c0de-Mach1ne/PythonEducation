@@ -7,11 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navOptions
 import com.example.simpleregistration.R
 import com.example.simpleregistration.auth.model.UserPersonalInfo
 import com.example.simpleregistration.databinding.FragmentProfileBinding
 
-class ProfileFragment: Fragment(R.layout.fragment_profile) {
+class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private lateinit var binding: FragmentProfileBinding
     private val viewModel by viewModels<ProfileViewModel> { ProfileViewModelFactory() }
@@ -28,6 +29,7 @@ class ProfileFragment: Fragment(R.layout.fragment_profile) {
     ): View {
         binding = FragmentProfileBinding.inflate(layoutInflater, container, false)
         observeViewModel()
+
         binding.btnLogout.setOnClickListener {
             signOut()
         }

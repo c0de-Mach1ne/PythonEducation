@@ -58,8 +58,6 @@ class AuthViewModel(
         }
     }
 
-
-
     private fun getUserRole() {
         authRepositoryImpl.getDatabaseUser()?.addOnCompleteListener { dataSnapshotTask ->
             if (dataSnapshotTask.isSuccessful) {
