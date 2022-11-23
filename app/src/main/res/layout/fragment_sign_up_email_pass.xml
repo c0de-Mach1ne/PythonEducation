@@ -77,7 +77,7 @@
             android:textColorHint="#616161" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnNextStep"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
