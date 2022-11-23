@@ -2,7 +2,7 @@ package com.example.simpleregistration.fragments.quiz
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.simpleregistration.fragments.model.DataRepository
+import com.example.simpleregistration.fragments.model.repository.DataRepository
 
 class QuizViewModelFactory : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

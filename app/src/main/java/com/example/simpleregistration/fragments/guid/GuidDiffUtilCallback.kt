@@ -1,4 +1,4 @@
-package com.example.simpleregistration.fragments
+package com.example.simpleregistration.fragments.guid
 
 import androidx.recyclerview.widget.DiffUtil
 import com.example.simpleregistration.fragments.model.Guid

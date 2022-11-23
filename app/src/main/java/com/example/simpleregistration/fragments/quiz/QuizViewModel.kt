@@ -3,15 +3,39 @@ package com.example.simpleregistration.fragments.quiz
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.simpleregistration.fragments.model.DataRepository
+import com.example.simpleregistration.fragments.model.repository.DataRepository
 import com.example.simpleregistration.fragments.model.Quiz
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 
 class QuizViewModel(
     private val dataRepository: DataRepository,
 ) : ViewModel() {
 
-    private val _quizList = MutableLiveData<Quiz>()
-    var quizList: LiveData<Quiz> = _quizList
+    private val _quizList = MutableLiveData<List<Quiz>>()
+    var quizList: LiveData<List<Quiz>> = _quizList
 
+    fun getQuizList() {
+        dataRepository.getQuizRef().addValueEventListener(
+            object : ValueEventListener {
 
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val listOfQuiz = mutableListOf<Quiz>()
+                    for (quizId in 0 until snapshot.childrenCount.toInt()) {
+                        dataRepository.getQuizById(quizId).addOnCompleteListener {
+                            it.result.getValue(Quiz::class.java)
+                                ?.let { data -> listOfQuiz.add(data) }
+                            _quizList.postValue(listOfQuiz)
+                        }
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+
+            }
+        )
+    }
 }

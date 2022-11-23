@@ -1,4 +1,4 @@
-package com.example.simpleregistration.fragments.model
+package com.example.simpleregistration.fragments.model.repository
 
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -11,7 +11,7 @@ class DataRepository {
 
     fun getGuidRef() = db.child("Courses")
 
-    fun getQuizById(quizId: Int) = db.child("Quizzes").child("id=$quizId")
+    fun getQuizById(quizId: Int) = db.child("Quizzes").child("id=$quizId").get()
 
     fun getQuizRef() = db.child("Quizzes")
 }

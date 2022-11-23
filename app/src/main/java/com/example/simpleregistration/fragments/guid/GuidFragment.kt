@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.simpleregistration.R
 import com.example.simpleregistration.databinding.FragmentContentBinding
-import com.example.simpleregistration.fragments.GuidAdapter
 
 class GuidFragment: Fragment(R.layout.fragment_content) {
 
@@ -28,7 +27,7 @@ class GuidFragment: Fragment(R.layout.fragment_content) {
 
     private fun observeViewModel(){
         viewModel.guidList.observe(viewLifecycleOwner){
-            Log.d("TAG", "list size ${it.size}")
+            Log.d("TAG", "guid list = ${it.size}")
             adapter.submitList(it)
         }
     }

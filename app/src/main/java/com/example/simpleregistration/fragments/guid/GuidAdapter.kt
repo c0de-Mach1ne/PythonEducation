@@ -1,4 +1,4 @@
-package com.example.simpleregistration.fragments
+package com.example.simpleregistration.fragments.guid
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
