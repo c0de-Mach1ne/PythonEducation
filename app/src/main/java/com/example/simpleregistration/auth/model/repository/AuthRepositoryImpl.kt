@@ -31,8 +31,8 @@ class AuthRepositoryImpl {
         }
 
     fun getDatabaseUser() =
-        firebaseAuth.uid?.let {
-            db.child("users").child(it).get()
+        firebaseAuth.uid?.let { uid ->
+            db.child("users").child(uid).get()
         }
 
     fun getAuthUser() = firebaseAuth.currentUser

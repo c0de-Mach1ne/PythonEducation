@@ -6,9 +6,9 @@ import com.example.simpleregistration.auth.model.repository.AuthRepositoryImpl
 
 class ProfileViewModelFactory : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(ProfieViewModel::class.java)) {
+        if (modelClass.isAssignableFrom(ProfileViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return ProfieViewModel(authRepositoryImpl = AuthRepositoryImpl()) as T
+            return ProfileViewModel(authRepositoryImpl = AuthRepositoryImpl()) as T
         }
         throw IllegalArgumentException("UNKNOWN VIEW MODEL CLASS")
     }

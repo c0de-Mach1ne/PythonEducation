@@ -14,7 +14,7 @@ import com.example.simpleregistration.databinding.FragmentProfileBinding
 class ProfileFragment: Fragment(R.layout.fragment_profile) {
 
     private lateinit var binding: FragmentProfileBinding
-    private val viewModel by viewModels<ProfieViewModel> { ProfileViewModelFactory() }
+    private val viewModel by viewModels<ProfileViewModel> { ProfileViewModelFactory() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
