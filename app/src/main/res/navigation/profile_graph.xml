@@ -8,12 +8,5 @@
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.simpleregistration.fragments.profile.ProfileFragment"
-        android:label="ProfileFragment" >
-        <action
-            android:id="@+id/action_profileFragment_to_main_graph"
-            app:destination="@id/main_graph"
-            app:popUpTo="@id/main_graph"
-            app:popUpToInclusive="true" />
-    </fragment>
-    <include app:graph="@navigation/main_graph" />
+        android:label="ProfileFragment" />
 </navigation>

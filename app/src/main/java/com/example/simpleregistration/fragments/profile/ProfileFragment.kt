@@ -6,21 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.navOptions
 import com.example.simpleregistration.R
 import com.example.simpleregistration.auth.model.UserPersonalInfo
 import com.example.simpleregistration.databinding.FragmentProfileBinding
+import com.example.simpleregistration.fragments.findTopNavController
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private lateinit var binding: FragmentProfileBinding
     private val viewModel by viewModels<ProfileViewModel> { ProfileViewModelFactory() }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-//        viewModel.getUserData()
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,7 +34,12 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private fun signOut() {
         viewModel.singOut()
-        findNavController().navigate(R.id.action_profileFragment_to_main_graph)
+        // TODO: разобраться с этим кодом. Код взят у Романа Андрюсченко с урока по навигации
+        findTopNavController().navigate(R.id.signInFragment, null, navOptions {
+            popUpTo(R.id.tabsFragment) {
+                inclusive = true
+            }
+        })
     }
 
     private fun observeViewModel() {
