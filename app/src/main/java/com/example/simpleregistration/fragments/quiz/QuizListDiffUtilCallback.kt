@@ -4,7 +4,7 @@ import androidx.recyclerview.widget.DiffUtil
 import com.example.simpleregistration.fragments.model.Quiz
 
 
-class QuizDiffUtilCallback : DiffUtil.ItemCallback<Quiz>() {
+class QuizListDiffUtilCallback : DiffUtil.ItemCallback<Quiz>() {
 
     override fun areItemsTheSame(oldItem: Quiz, newItem: Quiz) = oldItem == newItem
 

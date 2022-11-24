@@ -6,6 +6,20 @@
 
     <fragment
         android:id="@+id/guidFragment"
-        android:name="com.example.simpleregistration.fragments.guid.GuidFragment"
-        android:label="GuidFragment" />
+        android:name="com.example.simpleregistration.fragments.guid.screen.GuidListFragment"
+        android:label="GuidFragment">
+        <action
+            android:id="@+id/action_guidFragment_to_guidFragment2"
+            app:destination="@id/guidFragment2"
+            app:popUpTo="@id/guidFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/guidFragment2"
+        android:name="com.example.simpleregistration.fragments.guid.screen.GuidFragment"
+        android:label="GuidFragment">
+        <argument
+            android:name="Guid"
+            app:argType="com.example.simpleregistration.fragments.model.Guid" />
+    </fragment>
 </navigation>

@@ -1,4 +1,4 @@
-package com.example.simpleregistration.fragments.quiz
+package com.example.simpleregistration.fragments.quiz.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,7 +9,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 
-class QuizViewModel(
+class QuizListViewModel(
     private val dataRepository: DataRepository,
 ) : ViewModel() {
 

@@ -1,4 +1,4 @@
-package com.example.simpleregistration.fragments.guid
+package com.example.simpleregistration.fragments.guid.screen
 
 import android.os.Bundle
 import android.util.Log
@@ -7,14 +7,27 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.simpleregistration.R
 import com.example.simpleregistration.databinding.FragmentContentBinding
+import com.example.simpleregistration.fragments.guid.GuidListAdapter
+import com.example.simpleregistration.fragments.guid.viewmodel.GuidListViewModel
+import com.example.simpleregistration.fragments.guid.viewmodel.GuidListViewModelFactory
+import com.example.simpleregistration.fragments.model.Guid
+import com.example.simpleregistration.utils.ItemClickListener
 
-class GuidFragment: Fragment(R.layout.fragment_content) {
+class GuidListFragment : Fragment(R.layout.fragment_content) {
 
     private lateinit var binding: FragmentContentBinding
-    private val viewModel by viewModels<GuidViewModel> { GuidViewModelFactory() }
-    private val adapter by lazy { GuidAdapter() }
+    private val viewModel by viewModels<GuidListViewModel> { GuidListViewModelFactory() }
+    private val adapter by lazy {
+        GuidListAdapter(object : ItemClickListener<Guid> {
+            override fun onClickItem(value: Guid) {
+                findNavController().navigate(GuidListFragmentDirections.actionGuidFragmentToGuidFragment2(
+                    value))
+            }
+        })
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,8 +38,8 @@ class GuidFragment: Fragment(R.layout.fragment_content) {
         return binding.root
     }
 
-    private fun observeViewModel(){
-        viewModel.guidList.observe(viewLifecycleOwner){
+    private fun observeViewModel() {
+        viewModel.guidList.observe(viewLifecycleOwner) {
             Log.d("TAG", "guid list = ${it.size}")
             adapter.submitList(it)
         }
