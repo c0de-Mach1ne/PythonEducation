@@ -21,7 +21,7 @@ class MainViewModel(
         if (authRepositoryImpl.getAuthUser() != null) {
             _userState.value = AuthState.Success
         } else {
-            _userState.value = AuthState.Error(mes = "Welcome!")
+            _userState.value = AuthState.Error(mes = "Error!")
         }
     }
 }

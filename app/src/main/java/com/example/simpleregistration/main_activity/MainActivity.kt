@@ -18,17 +18,22 @@ import com.example.simpleregistration.auth.AuthState
 import com.example.simpleregistration.databinding.ActivityMainBinding
 import com.example.simpleregistration.fragments.TabsFragment
 
+// Todo: навигация написана по гайду Романа Андрюсченко: https://www.youtube.com/watch?v=mqorLkWtinU&t=1444s&ab_channel=RomanAndrushchenko
+//  я обязан разобраться в коде и понять за что отвечает каждая строчка и почему такое решение было принято,
+//  как данное решение можно оптимизировать
 class MainActivity : AppCompatActivity() {
 
-    private var navController: NavController? = null
+    private lateinit var navController: NavController
     private lateinit var binding: ActivityMainBinding
     private val viewModel by viewModels<MainViewModel> { MainViewModelFactory() }
     private val topLevelDestination = setOf(getTabsDestination(), getSignInDestination())
+
     private val destinationListener =
         NavController.OnDestinationChangedListener { _, destination, _ ->
             supportActionBar?.title = destination.label
             supportActionBar?.setDisplayHomeAsUpEnabled(!isStartDestination(destination))
         }
+
     private val fragmentListener = object : FragmentManager.FragmentLifecycleCallbacks() {
         override fun onFragmentViewCreated(
             fm: FragmentManager,
@@ -47,11 +52,10 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater).also { setContentView(it.root) }
         setSupportActionBar(binding.toolbar)
+        navController = getRootNavController()
 
         // TODO: придумать более лаконичный способ изменения статус бара на цвет темы
         window.statusBarColor = ContextCompat.getColor(this, R.color.black)
-
-        val navController = getRootNavController()
 
         observeViewModel(navController)
         onNavControllerActivated(navController)
@@ -69,13 +73,14 @@ class MainActivity : AppCompatActivity() {
             when (authState) {
                 is AuthState.Success -> {
                     graph.setStartDestination(getTabsDestination())
+                    navController.graph = graph
                 }
                 is AuthState.Error -> {
                     graph.setStartDestination(getSignInDestination())
+                    navController.graph = graph
                 }
             }
         }
-        navController.graph = graph
     }
 
     private fun getRootNavController(): NavController {
@@ -85,11 +90,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean =
-        (navController?.navigateUp() ?: false) || super.onSupportNavigateUp()
+        (navController.navigateUp()) || super.onSupportNavigateUp()
 
     private fun onNavControllerActivated(navController: NavController) {
         if (this.navController == navController) return
-        this.navController?.removeOnDestinationChangedListener(destinationListener)
+        this.navController.removeOnDestinationChangedListener(destinationListener)
         navController.addOnDestinationChangedListener(destinationListener)
         this.navController = navController
     }
@@ -103,7 +108,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         supportFragmentManager.unregisterFragmentLifecycleCallbacks(fragmentListener)
-        navController = null
         super.onDestroy()
     }
 

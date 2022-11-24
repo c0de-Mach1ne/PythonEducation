@@ -81,7 +81,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Select you role. By default, the student"
-        android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/inputLayoutPatronymic" />
@@ -99,7 +98,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:hint="Patronymic"
+        android:hint="Enter secret code"
         android:scrollbarSize="25dp"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"

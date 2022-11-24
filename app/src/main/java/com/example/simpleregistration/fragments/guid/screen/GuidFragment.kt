@@ -19,8 +19,8 @@ class GuidFragment: Fragment(R.layout.fragment_guid) {
     ): View {
         binding = FragmentGuidBinding.inflate(layoutInflater, container, false)
         Log.d("TAG", "GuidFragment")
-//        binding.webView.settings.javaScriptEnabled
-//        binding.webView.loadUrl("https://metanit.com/python/tutorial/2.2.php")
+        binding.webView.settings.javaScriptEnabled
+        binding.webView.loadUrl("https://metanit.com/python/tutorial/2.2.php")
         return binding.root
     }
 }
