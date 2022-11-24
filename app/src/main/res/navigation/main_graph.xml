@@ -46,5 +46,5 @@
         android:id="@+id/tabsFragment"
         tools:layout="@layout/fragment_tabs"
         android:name="com.example.simpleregistration.fragments.TabsFragment"
-        android:label="TabsFragment" />
+        android:label="Home" />
 </navigation>

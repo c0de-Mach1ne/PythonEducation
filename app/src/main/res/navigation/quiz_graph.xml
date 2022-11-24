@@ -7,5 +7,5 @@
     <fragment
         android:id="@+id/quizFragment"
         android:name="com.example.simpleregistration.fragments.quiz.screen.QuizListFragment"
-        android:label="QuizFragment" />
+        android:label="Quiz" />
 </navigation>

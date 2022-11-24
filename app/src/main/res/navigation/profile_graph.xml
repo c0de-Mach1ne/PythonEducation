@@ -8,5 +8,5 @@
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.simpleregistration.fragments.profile.ProfileFragment"
-        android:label="ProfileFragment" />
+        android:label="Profile" />
 </navigation>
