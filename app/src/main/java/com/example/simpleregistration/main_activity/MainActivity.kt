@@ -18,7 +18,7 @@ import com.example.simpleregistration.auth.AuthState
 import com.example.simpleregistration.databinding.ActivityMainBinding
 import com.example.simpleregistration.fragments.TabsFragment
 
-// Todo: навигация написана по гайду Романа Андрюсченко: https://www.youtube.com/watch?v=mqorLkWtinU&t=1444s&ab_channel=RomanAndrushchenko
+// Todo #код : навигация написана по гайду Романа Андрюсченко: https://www.youtube.com/watch?v=mqorLkWtinU&t=1444s&ab_channel=RomanAndrushchenko
 //  я обязан разобраться в коде и понять за что отвечает каждая строчка и почему такое решение было принято,
 //  как данное решение можно оптимизировать
 class MainActivity : AppCompatActivity() {
@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         navController = getRootNavController()
 
-        // TODO: придумать более лаконичный способ изменения статус бара на цвет темы
+        // TODO #рефакторинг: придумать более лаконичный способ изменения статус бара на цвет темы
         window.statusBarColor = ContextCompat.getColor(this, R.color.black)
 
         observeViewModel(navController)
@@ -106,12 +106,12 @@ class MainActivity : AppCompatActivity() {
         return startDestinations.contains(destination.id)
     }
 
+    private fun getSignInDestination() = R.id.signInFragment
+    private fun getTabsDestination() = R.id.tabsFragment
+    private fun getMainNavGraph() = R.navigation.main_graph
+
     override fun onDestroy() {
         supportFragmentManager.unregisterFragmentLifecycleCallbacks(fragmentListener)
         super.onDestroy()
     }
-
-    private fun getSignInDestination() = R.id.signInFragment
-    private fun getTabsDestination() = R.id.tabsFragment
-    private fun getMainNavGraph() = R.navigation.main_graph
 }

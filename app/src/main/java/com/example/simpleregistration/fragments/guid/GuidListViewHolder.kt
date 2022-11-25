@@ -8,8 +8,7 @@ import com.example.simpleregistration.utils.ItemClickListener
 class GuidListViewHolder(
     private val binding: GuidItemBinding,
     private val callback: ItemClickListener<Guid>,
-) :
-    RecyclerView.ViewHolder(binding.root) {
+) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(guid: Guid) {
         binding.root.setOnClickListener { callback.onClickItem(guid) }

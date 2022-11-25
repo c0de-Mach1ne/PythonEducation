@@ -6,11 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import com.example.simpleregistration.R
 import com.example.simpleregistration.databinding.FragmentGuidBinding
+import com.example.simpleregistration.fragments.model.Guid
 
 class GuidFragment: Fragment(R.layout.fragment_guid) {
     private lateinit var binding: FragmentGuidBinding
+
+    private val args by navArgs<GuidFragmentArgs>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -20,7 +24,7 @@ class GuidFragment: Fragment(R.layout.fragment_guid) {
         binding = FragmentGuidBinding.inflate(layoutInflater, container, false)
         Log.d("TAG", "GuidFragment")
         binding.webView.settings.javaScriptEnabled
-        binding.webView.loadUrl("https://metanit.com/python/tutorial/2.2.php")
+        binding.webView.loadUrl(args.guid.urlReference.toString())
         return binding.root
     }
 }

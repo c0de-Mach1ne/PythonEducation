@@ -19,7 +19,7 @@
         android:name="com.example.simpleregistration.fragments.guid.screen.GuidFragment"
         android:label="Guid">
         <argument
-            android:name="Guid"
+            android:name="guid"
             app:argType="com.example.simpleregistration.fragments.model.Guid" />
     </fragment>
 </navigation>

@@ -34,7 +34,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private fun signOut() {
         viewModel.singOut()
-        // TODO: разобраться с этим кодом. Код взят у Романа Андрюсченко с урока по навигации
+        // TODO #код: разобраться с этим кодом. Код взят у Романа Андрюсченко с урока по навигации
+        // TODO #баг: в общем тут проблема. после выхода на sign in мы нажимаем кнопку назад и нас возвращает на экран profile
         findTopNavController().navigate(R.id.signInFragment, null, navOptions {
             popUpTo(R.id.tabsFragment) {
                 inclusive = true
