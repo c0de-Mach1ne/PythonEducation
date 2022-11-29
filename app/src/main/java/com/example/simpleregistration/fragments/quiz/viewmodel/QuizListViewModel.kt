@@ -26,6 +26,8 @@ class QuizListViewModel(
             }
             _quizList.postValue(quizList)
             _uiState.value = Loading.Stop
+        }.addOnFailureListener {
+            _uiState.value = Loading.Error(it.message.toString())
         }
     }
 }

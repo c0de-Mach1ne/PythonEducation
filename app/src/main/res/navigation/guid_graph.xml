@@ -13,6 +13,9 @@
             app:destination="@id/guidFragment2"
             app:popUpTo="@id/guidFragment"
             app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_guidFragment_to_createGuidFragment"
+            app:destination="@id/createGuidFragment" />
     </fragment>
     <fragment
         android:id="@+id/guidFragment2"
@@ -22,4 +25,8 @@
             android:name="guid"
             app:argType="com.example.simpleregistration.fragments.model.Guid" />
     </fragment>
+    <fragment
+        android:id="@+id/createGuidFragment"
+        android:name="com.example.simpleregistration.fragments.guid.screen.CreateGuidFragment"
+        android:label="CreateGuidFragment" />
 </navigation>

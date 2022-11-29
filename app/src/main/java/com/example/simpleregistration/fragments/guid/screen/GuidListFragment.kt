@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -48,6 +49,10 @@ class GuidListFragment : Fragment(R.layout.fragment_content) {
         super.onViewCreated(view, savedInstanceState)
         observeViewModel()
         initRecycler()
+
+        binding.fabAddContent.setOnClickListener {
+            findNavController().navigate(R.id.action_guidFragment_to_createGuidFragment)
+        }
     }
 
     private fun initRecycler() = with(binding) {
@@ -69,6 +74,9 @@ class GuidListFragment : Fragment(R.layout.fragment_content) {
                 }
                 is Loading.Stop -> {
                     binding.progressBar.isVisible = false
+                }
+                is Loading.Error -> {
+                    Toast.makeText(binding.root.context, it.message, Toast.LENGTH_SHORT).show()
                 }
             }
         }

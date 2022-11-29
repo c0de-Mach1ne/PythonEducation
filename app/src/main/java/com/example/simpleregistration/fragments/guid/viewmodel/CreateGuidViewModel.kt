@@ -7,27 +7,24 @@ import com.example.simpleregistration.fragments.model.Guid
 import com.example.simpleregistration.fragments.repository.DataRepository
 import com.example.simpleregistration.utils.state_model.Loading
 
-class GuidListViewModel(
+class CreateGuidViewModel(
     private val dataRepository: DataRepository,
 ) : ViewModel() {
-
-    private val _guidList = MutableLiveData<List<Guid>>(listOf())
-    var guidList: LiveData<List<Guid>> = _guidList
 
     private val _uiState = MutableLiveData<Loading>()
     var uiState: LiveData<Loading> = _uiState
 
-    fun getGuidList() {
+    fun pushGuid(guid: Guid) {
         _uiState.value = Loading.Start
-        dataRepository.getGuid().addOnCompleteListener { data ->
-            val guidList = mutableListOf<Guid>()
-            for (guid in data.result.children) {
-                guid.getValue(Guid::class.java)?.let { guidList.add(it) }
+        // TOdo: добавить валидацию полей
+        dataRepository.pushGuid(guid).addOnCompleteListener {
+            if (it.isSuccessful) {
+                _uiState.value = Loading.Stop
+            } else {
+                _uiState.value = Loading.Error(it.exception?.message.toString())
             }
-            _guidList.postValue(guidList)
-            _uiState.value = Loading.Stop
-        }.addOnFailureListener {
-            _uiState.value = Loading.Error(it.message.toString())
         }
     }
+
+    fun getUid() = dataRepository.getUid()
 }

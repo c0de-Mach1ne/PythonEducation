@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -40,15 +41,15 @@ class QuizListFragment : Fragment(R.layout.fragment_content) {
         initRecycler()
     }
 
-    private fun observeViewModel(){
-        viewModel.quizList.observe(viewLifecycleOwner){ quizList ->
+    private fun observeViewModel() {
+        viewModel.quizList.observe(viewLifecycleOwner) { quizList ->
             adapter.submitList(quizList)
             quizList.forEach { quiz ->
                 adapter.notifyItemChanged(quizList.indexOf(quiz))
             }
         }
 
-        viewModel.uiState.observe(viewLifecycleOwner){
+        viewModel.uiState.observe(viewLifecycleOwner) {
             when (it) {
                 is Loading.Start -> {
                     binding.progressBar.isVisible = true
@@ -56,11 +57,14 @@ class QuizListFragment : Fragment(R.layout.fragment_content) {
                 is Loading.Stop -> {
                     binding.progressBar.isVisible = false
                 }
+                is Loading.Error -> {
+                    Toast.makeText(binding.root.context, it.message, Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }
 
-    private fun initRecycler() = with(binding){
+    private fun initRecycler() = with(binding) {
         recyclerView.adapter = adapter
     }
 }
