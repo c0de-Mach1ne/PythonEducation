@@ -5,9 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.simpleregistration.auth.model.UserPersonalInfo
-import com.example.simpleregistration.auth.model.repository.AuthRepositoryImpl
+import com.example.simpleregistration.auth.model.repository.AuthRepository
 
-class ProfileViewModel(private val authRepositoryImpl: AuthRepositoryImpl): ViewModel() {
+class ProfileViewModel(private val authRepository: AuthRepository): ViewModel() {
 
     private val _userData = MutableLiveData<UserPersonalInfo>()
     var userData: LiveData<UserPersonalInfo> = _userData
@@ -17,7 +17,7 @@ class ProfileViewModel(private val authRepositoryImpl: AuthRepositoryImpl): View
     }
 
     private fun getUserData(){
-        authRepositoryImpl.getDatabaseUser()?.addOnCompleteListener { dataSnapshotTask ->
+        authRepository.getDatabaseUser()?.addOnCompleteListener { dataSnapshotTask ->
             Log.d("TAG", "userData ${dataSnapshotTask.result}")
             val result = dataSnapshotTask.result.getValue(UserPersonalInfo::class.java)
             _userData.value = UserPersonalInfo(
@@ -30,5 +30,5 @@ class ProfileViewModel(private val authRepositoryImpl: AuthRepositoryImpl): View
     }
 
     fun singOut() =
-        authRepositoryImpl.signOut()
+        authRepository.signOut()
 }

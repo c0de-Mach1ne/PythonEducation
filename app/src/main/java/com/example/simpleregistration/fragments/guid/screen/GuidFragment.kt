@@ -9,9 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.example.simpleregistration.R
 import com.example.simpleregistration.databinding.FragmentGuidBinding
-import com.example.simpleregistration.fragments.model.Guid
 
-class GuidFragment: Fragment(R.layout.fragment_guid) {
+class GuidFragment : Fragment(R.layout.fragment_guid) {
     private lateinit var binding: FragmentGuidBinding
 
     private val args by navArgs<GuidFragmentArgs>()

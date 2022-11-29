@@ -7,9 +7,7 @@ class DataRepository {
 
     private val db = Firebase.database.reference
 
-    fun getGuidById(guidId: Int) = db.child("Courses").child("id=$guidId").get()
-
-    fun getGuidRef() = db.child("Courses")
+    fun getGuidRef() = db.child("Courses").get()
 
     fun getQuizById(quizId: Int) = db.child("Quizzes").child("id=$quizId").get()
 

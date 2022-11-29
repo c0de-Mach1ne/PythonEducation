@@ -14,7 +14,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.simpleregistration.R
-import com.example.simpleregistration.auth.AuthState
+import com.example.simpleregistration.utils.state_model.AuthState
 import com.example.simpleregistration.databinding.ActivityMainBinding
 import com.example.simpleregistration.fragments.TabsFragment
 
@@ -110,8 +110,8 @@ class MainActivity : AppCompatActivity() {
     private fun getTabsDestination() = R.id.tabsFragment
     private fun getMainNavGraph() = R.navigation.main_graph
 
-    override fun onDestroy() {
-        supportFragmentManager.unregisterFragmentLifecycleCallbacks(fragmentListener)
-        super.onDestroy()
-    }
+        override fun onDestroy() {
+            supportFragmentManager.unregisterFragmentLifecycleCallbacks(fragmentListener)
+            super.onDestroy()
+        }
 }

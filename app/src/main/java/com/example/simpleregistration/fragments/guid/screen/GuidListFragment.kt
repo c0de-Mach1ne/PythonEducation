@@ -1,10 +1,10 @@
 package com.example.simpleregistration.fragments.guid.screen
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -15,6 +15,7 @@ import com.example.simpleregistration.fragments.guid.viewmodel.GuidListViewModel
 import com.example.simpleregistration.fragments.guid.viewmodel.GuidListViewModelFactory
 import com.example.simpleregistration.fragments.model.Guid
 import com.example.simpleregistration.utils.ItemClickListener
+import com.example.simpleregistration.utils.state_model.Loading
 
 class GuidListFragment : Fragment(R.layout.fragment_content) {
 
@@ -38,21 +39,34 @@ class GuidListFragment : Fragment(R.layout.fragment_content) {
         return binding.root
     }
 
-    private fun observeViewModel() {
-        viewModel.guidList.observe(viewLifecycleOwner) {
-            Log.d("TAG", "guid list = ${it.size}")
-            adapter.submitList(it)
-        }
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getList()
+        viewModel.getGuidList()
         observeViewModel()
         initRecycler()
     }
 
     private fun initRecycler() = with(binding) {
         recyclerView.adapter = adapter
+    }
+
+    private fun observeViewModel() {
+        viewModel.guidList.observe(viewLifecycleOwner) { guidList ->
+            adapter.submitList(guidList)
+            guidList.forEach { guid ->
+                adapter.notifyItemChanged(guidList.indexOf(guid))
+            }
+        }
+
+        viewModel.uiState.observe(viewLifecycleOwner) {
+            when (it) {
+                is Loading.Start -> {
+                    binding.progressBar.isVisible = true
+                }
+                is Loading.Stop -> {
+                    binding.progressBar.isVisible = false
+                }
+            }
+        }
     }
 }

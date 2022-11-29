@@ -1,4 +1,4 @@
-package com.example.simpleregistration.auth
+package com.example.simpleregistration.utils.state_model
 
 
 sealed class AuthState {

@@ -3,15 +3,15 @@ package com.example.simpleregistration.auth.viewmode
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.simpleregistration.auth.AuthState
-import com.example.simpleregistration.auth.UserRole
+import com.example.simpleregistration.utils.state_model.AuthState
+import com.example.simpleregistration.utils.state_model.UserRole
 import com.example.simpleregistration.auth.model.UserPersonalInfo
 import com.example.simpleregistration.auth.model.UserSignIn
 import com.example.simpleregistration.auth.model.UserSignUp
-import com.example.simpleregistration.auth.model.repository.AuthRepositoryImpl
+import com.example.simpleregistration.auth.model.repository.AuthRepository
 
 class AuthViewModel(
-    private val authRepositoryImpl: AuthRepositoryImpl,
+    private val authRepository: AuthRepository,
 ) : ViewModel() {
 
     private val _uiState = MutableLiveData<AuthState>()
@@ -19,10 +19,8 @@ class AuthViewModel(
     private val _userRole = MutableLiveData<UserRole>()
     var userRole: LiveData<UserRole> = _userRole
 
-
-
     fun signIn(email: String, pass: String) {
-        authRepositoryImpl.signIn(UserSignIn(email, pass)).addOnCompleteListener {
+        authRepository.signIn(UserSignIn(email, pass)).addOnCompleteListener {
             if (it.isSuccessful) {
                 getUserRole()
             } else _userRole.value = UserRole.Error(mes = it.exception?.message)
@@ -33,7 +31,7 @@ class AuthViewModel(
         email: String,
         password: String,
     ) {
-        authRepositoryImpl.signUpWithEmailAndPass(
+        authRepository.signUpWithEmailAndPass(
             UserSignUp(email, password)
         ).addOnCompleteListener {
             if (it.isSuccessful) _uiState.value = AuthState.Success
@@ -47,7 +45,7 @@ class AuthViewModel(
         patronymic: String,
         isTeacher: Boolean,
     ) {
-        authRepositoryImpl.signUpWithPersonalInfo(UserPersonalInfo(
+        authRepository.signUpWithPersonalInfo(UserPersonalInfo(
             name,
             sureName,
             patronymic,
@@ -59,7 +57,7 @@ class AuthViewModel(
     }
 
     private fun getUserRole() {
-        authRepositoryImpl.getDatabaseUser()?.addOnCompleteListener { dataSnapshotTask ->
+        authRepository.getDatabaseUser()?.addOnCompleteListener { dataSnapshotTask ->
             if (dataSnapshotTask.isSuccessful) {
                 _userRole.value =
                     UserRole.Success(dataSnapshotTask.result.getValue(UserPersonalInfo::class.java)?.teacherFlag)

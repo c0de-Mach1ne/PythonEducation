@@ -7,7 +7,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
-class AuthRepositoryImpl {
+class AuthRepository {
 
     private val firebaseAuth = FirebaseAuth.getInstance()
     private val db = Firebase.database.reference
