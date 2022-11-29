@@ -2,7 +2,7 @@ package com.example.simpleregistration.fragments.guid.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.simpleregistration.fragments.model.repository.DataRepository
+import com.example.simpleregistration.fragments.repository.DataRepository
 
 class GuidListViewModelFactory : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

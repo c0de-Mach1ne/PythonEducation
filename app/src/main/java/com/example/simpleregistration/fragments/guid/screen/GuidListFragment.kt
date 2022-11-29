@@ -30,6 +30,11 @@ class GuidListFragment : Fragment(R.layout.fragment_content) {
         })
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.getGuidList()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -41,7 +46,6 @@ class GuidListFragment : Fragment(R.layout.fragment_content) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getGuidList()
         observeViewModel()
         initRecycler()
     }

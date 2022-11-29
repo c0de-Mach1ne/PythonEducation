@@ -11,8 +11,8 @@ import com.example.simpleregistration.R
 import com.example.simpleregistration.databinding.FragmentGuidBinding
 
 class GuidFragment : Fragment(R.layout.fragment_guid) {
-    private lateinit var binding: FragmentGuidBinding
 
+    private lateinit var binding: FragmentGuidBinding
     private val args by navArgs<GuidFragmentArgs>()
 
     override fun onCreateView(
@@ -21,7 +21,6 @@ class GuidFragment : Fragment(R.layout.fragment_guid) {
         savedInstanceState: Bundle?,
     ): View {
         binding = FragmentGuidBinding.inflate(layoutInflater, container, false)
-        Log.d("TAG", "GuidFragment")
         binding.webView.settings.javaScriptEnabled
         binding.webView.loadUrl(args.guid.urlReference.toString())
         return binding.root

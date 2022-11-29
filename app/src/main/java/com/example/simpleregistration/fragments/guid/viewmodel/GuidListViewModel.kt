@@ -1,11 +1,10 @@
 package com.example.simpleregistration.fragments.guid.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.simpleregistration.fragments.model.Guid
-import com.example.simpleregistration.fragments.model.repository.DataRepository
+import com.example.simpleregistration.fragments.repository.DataRepository
 import com.example.simpleregistration.utils.state_model.Loading
 
 class GuidListViewModel(
@@ -19,11 +18,11 @@ class GuidListViewModel(
     var uiState: LiveData<Loading> = _uiState
 
     fun getGuidList() {
-        dataRepository.getGuidRef().addOnCompleteListener { taskSnapshot ->
-            _uiState.value = Loading.Start
+        _uiState.value = Loading.Start
+        dataRepository.getGuid().addOnCompleteListener { data ->
             val guidList = mutableListOf<Guid>()
-            for (guid in taskSnapshot.result.children) {
-                guid.getValue(Guid::class.java)?.let { data -> guidList.add(data) }
+            for (guid in data.result.children) {
+                guid.getValue(Guid::class.java)?.let { guidList.add(it) }
             }
             _guidList.postValue(guidList)
             _uiState.value = Loading.Stop
