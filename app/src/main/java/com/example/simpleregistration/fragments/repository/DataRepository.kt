@@ -17,4 +17,9 @@ class DataRepository {
     fun pushGuid(guid: Guid) = db.child("Courses").child(guid.id.toString()).setValue(guid)
 
     fun getUid() = auth.currentUser?.uid
+
+    fun getDatabaseUser() =
+        auth.uid?.let { uid ->
+            db.child("Users").child(uid).get()
+        }
 }

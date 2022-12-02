@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/guidFragment"
-        android:name="com.example.simpleregistration.fragments.guid.screen.GuidListFragment"
+        android:name="com.example.simpleregistration.fragments.guid.guid_list.GuidListFragment"
         android:label="Guid list">
         <action
             android:id="@+id/action_guidFragment_to_guidFragment2"
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/guidFragment2"
-        android:name="com.example.simpleregistration.fragments.guid.screen.GuidFragment"
+        android:name="com.example.simpleregistration.fragments.guid.guid_description.GuidDescriptionFragment"
         android:label="Guid">
         <argument
             android:name="guid"
@@ -27,6 +27,6 @@
     </fragment>
     <fragment
         android:id="@+id/createGuidFragment"
-        android:name="com.example.simpleregistration.fragments.guid.screen.CreateGuidFragment"
+        android:name="com.example.simpleregistration.fragments.guid.create.CreateGuidFragment"
         android:label="CreateGuidFragment" />
 </navigation>

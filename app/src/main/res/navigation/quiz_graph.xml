@@ -6,6 +6,18 @@
 
     <fragment
         android:id="@+id/quizFragment"
-        android:name="com.example.simpleregistration.fragments.quiz.screen.QuizListFragment"
-        android:label="Quiz" />
+        android:name="com.example.simpleregistration.fragments.quiz.quiz_list.QuizListFragment"
+        android:label="Quiz" >
+        <action
+            android:id="@+id/action_quizFragment_to_quizDescription"
+            app:destination="@id/quizDescription" />
+    </fragment>
+    <fragment
+        android:id="@+id/quizDescription"
+        android:name="com.example.simpleregistration.fragments.quiz.quiz_description.QuizDescription"
+        android:label="QuizDescription" >
+        <argument
+            android:name="quiz"
+            app:argType="com.example.simpleregistration.fragments.model.Quiz" />
+    </fragment>
 </navigation>

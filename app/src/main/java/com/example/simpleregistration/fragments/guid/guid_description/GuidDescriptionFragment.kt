@@ -1,7 +1,6 @@
-package com.example.simpleregistration.fragments.guid.screen
+package com.example.simpleregistration.fragments.guid.guid_description
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,10 +9,10 @@ import androidx.navigation.fragment.navArgs
 import com.example.simpleregistration.R
 import com.example.simpleregistration.databinding.FragmentGuidBinding
 
-class GuidFragment : Fragment(R.layout.fragment_guid) {
+class GuidDescriptionFragment : Fragment(R.layout.fragment_guid) {
 
     private lateinit var binding: FragmentGuidBinding
-    private val args by navArgs<GuidFragmentArgs>()
+    private val args by navArgs<GuidDescriptionFragmentArgs>()
 
     override fun onCreateView(
         inflater: LayoutInflater,

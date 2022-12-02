@@ -1,4 +1,4 @@
-package com.example.simpleregistration.fragments.quiz.viewmodel
+package com.example.simpleregistration.fragments.quiz.quiz_list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -25,7 +25,7 @@ class QuizListViewModel(
                 quiz.getValue(Quiz::class.java)?.let { quizList.add(it) }
             }
             _quizList.postValue(quizList)
-            _uiState.value = Loading.Stop
+            if(data.isComplete) _uiState.value = Loading.Stop
         }.addOnFailureListener {
             _uiState.value = Loading.Error(it.message.toString())
         }

@@ -1,4 +1,4 @@
-package com.example.simpleregistration.fragments.quiz.viewmodel
+package com.example.simpleregistration.fragments.quiz.quiz_list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

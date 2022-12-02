@@ -1,4 +1,4 @@
-package com.example.simpleregistration.auth.viewmode
+package com.example.simpleregistration.auth.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

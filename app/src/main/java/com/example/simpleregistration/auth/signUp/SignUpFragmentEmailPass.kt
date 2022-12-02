@@ -7,8 +7,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.simpleregistration.utils.state_model.AuthState
-import com.example.simpleregistration.auth.viewmode.AuthViewModel
-import com.example.simpleregistration.auth.viewmode.AuthViewModelFactory
+import com.example.simpleregistration.auth.viewmodels.AuthViewModel
+import com.example.simpleregistration.auth.viewmodels.AuthViewModelFactory
 import com.example.simpleregistration.R
 import com.example.simpleregistration.databinding.FragmentSignUpEmailPassBinding
 

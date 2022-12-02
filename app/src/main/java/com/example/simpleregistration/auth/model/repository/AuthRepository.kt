@@ -20,7 +20,7 @@ class AuthRepository {
 
     fun signUpWithPersonalInfo(userPersonalInfo: UserPersonalInfo) =
         firebaseAuth.currentUser?.let { firebaseUser ->
-            db.child("users").child(firebaseUser.uid).setValue(
+            db.child("Users").child(firebaseUser.uid).setValue(
                 UserPersonalInfo(
                     name = userPersonalInfo.name,
                     sureName = userPersonalInfo.sureName,
@@ -32,7 +32,7 @@ class AuthRepository {
 
     fun getDatabaseUser() =
         firebaseAuth.uid?.let { uid ->
-            db.child("users").child(uid).get()
+            db.child("Users").child(uid).get()
         }
 
     fun getAuthUser() = firebaseAuth.currentUser

@@ -1,4 +1,4 @@
-package com.example.simpleregistration.fragments.guid.screen
+package com.example.simpleregistration.fragments.guid.create
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,8 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.simpleregistration.R
 import com.example.simpleregistration.databinding.FragmentCreateGuidBinding
-import com.example.simpleregistration.fragments.guid.viewmodel.CreateGuidViewModel
-import com.example.simpleregistration.fragments.guid.viewmodel.CreateGuidViewModelFactory
 import com.example.simpleregistration.fragments.model.Guid
 import com.example.simpleregistration.utils.state_model.Loading
 import kotlin.random.Random

@@ -1,4 +1,4 @@
-package com.example.simpleregistration.fragments.guid.viewmodel
+package com.example.simpleregistration.fragments.guid.guid_list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -25,9 +25,10 @@ class GuidListViewModel(
                 guid.getValue(Guid::class.java)?.let { guidList.add(it) }
             }
             _guidList.postValue(guidList)
-            _uiState.value = Loading.Stop
+            if (data.isComplete) _uiState.value = Loading.Stop
         }.addOnFailureListener {
             _uiState.value = Loading.Error(it.message.toString())
         }
     }
 }
+

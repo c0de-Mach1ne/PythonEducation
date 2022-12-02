@@ -14,9 +14,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.simpleregistration.R
-import com.example.simpleregistration.utils.state_model.AuthState
 import com.example.simpleregistration.databinding.ActivityMainBinding
 import com.example.simpleregistration.fragments.TabsFragment
+import com.example.simpleregistration.utils.state_model.AuthState
 
 // Todo #код : навигация написана по гайду Романа Андрюсченко: https://www.youtube.com/watch?v=mqorLkWtinU&t=1444s&ab_channel=RomanAndrushchenko
 //  я обязан разобраться в коде и понять за что отвечает каждая строчка и почему такое решение было принято,
@@ -110,8 +110,8 @@ class MainActivity : AppCompatActivity() {
     private fun getTabsDestination() = R.id.tabsFragment
     private fun getMainNavGraph() = R.navigation.main_graph
 
-        override fun onDestroy() {
-            supportFragmentManager.unregisterFragmentLifecycleCallbacks(fragmentListener)
-            super.onDestroy()
-        }
+    override fun onDestroy() {
+        supportFragmentManager.unregisterFragmentLifecycleCallbacks(fragmentListener)
+        super.onDestroy()
+    }
 }

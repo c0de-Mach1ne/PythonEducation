@@ -1,4 +1,4 @@
-package com.example.simpleregistration.fragments.guid.viewmodel
+package com.example.simpleregistration.fragments.guid.guid_list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

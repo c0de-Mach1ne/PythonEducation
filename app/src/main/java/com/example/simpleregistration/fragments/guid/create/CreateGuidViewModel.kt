@@ -1,4 +1,4 @@
-package com.example.simpleregistration.fragments.guid.viewmodel
+package com.example.simpleregistration.fragments.guid.create
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
