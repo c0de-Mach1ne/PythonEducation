@@ -8,5 +8,5 @@ class AnswerDiffUtilCallback : DiffUtil.ItemCallback<QuizAnswers>() {
     override fun areItemsTheSame(oldItem: QuizAnswers, newItem: QuizAnswers) = oldItem == newItem
 
     override fun areContentsTheSame(oldItem: QuizAnswers, newItem: QuizAnswers) =
-        oldItem.isCorrect == newItem.isCorrect
+        oldItem.correctFlag == newItem.correctFlag
 }

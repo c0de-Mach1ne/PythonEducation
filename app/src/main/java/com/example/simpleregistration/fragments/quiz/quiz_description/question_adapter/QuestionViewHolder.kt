@@ -10,7 +10,8 @@ class QuestionViewHolder(
     private val callback: ItemClickListener<QuizQuestions>,
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(quizQuestions: QuizQuestions) {
-        binding.root.setOnClickListener { callback.onClickItem(quizQuestions) }
+    fun bind(quizQuestion: QuizQuestions) {
+        binding.root.setOnClickListener { callback.onClickItem(quizQuestion) }
+
     }
 }
