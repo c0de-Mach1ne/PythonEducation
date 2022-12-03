@@ -59,7 +59,6 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         navController = getRootNavController()
 
-        // TODO #рефакторинг: придумать более лаконичный способ изменения статус бара на цвет темы
         window.statusBarColor = ContextCompat.getColor(this, R.color.black)
 
         observeViewModel(navController)

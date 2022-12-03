@@ -10,7 +10,7 @@ import androidx.navigation.navOptions
 import com.example.simpleregistration.R
 import com.example.simpleregistration.auth.model.UserPersonalInfo
 import com.example.simpleregistration.databinding.FragmentProfileBinding
-import com.example.simpleregistration.fragments.findTopNavController
+import com.example.simpleregistration.utils.findTopNavController
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
