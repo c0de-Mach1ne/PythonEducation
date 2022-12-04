@@ -32,13 +32,15 @@ class QuizDescription : Fragment(R.layout.fragment_quiz_description) {
         binding.linearProgressBar.max = args.quiz.questions?.size ?: 0
         binding.btnAnswer.setOnClickListener {
             binding.linearProgressBar.progress = currentQuestions + 1
+            selectRightAnswer()
+            checkRightAnswer()
             if (currentQuestions < (args.quiz.questions?.size ?: 1) - 1) {
-                selectRightAnswer()
-                checkRightAnswer()
+//                selectRightAnswer()
+//                checkRightAnswer()
                 currentQuestions++
             } else {
-                selectRightAnswer()
-                checkRightAnswer()
+//                selectRightAnswer()
+//                checkRightAnswer()
                 Toast.makeText(binding.radioGroup.context,
                     "Поздравляю, ты ответил " +
                             "правильно на $countCurrentAnswers из ${args.quiz.questions?.size}",
@@ -78,7 +80,7 @@ class QuizDescription : Fragment(R.layout.fragment_quiz_description) {
             else -> -1
         }
 
-        if (currentIndex == selectAnswer) {
+        if (currentIndex == selectAnswer && countCurrentAnswers < (args.quiz.questions?.size ?: 0)) {
             countCurrentAnswers++
         }
     }
