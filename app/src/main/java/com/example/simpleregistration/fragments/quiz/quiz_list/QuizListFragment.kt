@@ -24,8 +24,8 @@ class QuizListFragment : Fragment(R.layout.fragment_content) {
     private val adapter by lazy {
         QuizAdapter( object : ItemClickListener<Quiz> {
                 override fun onClickItem(value: Quiz) {
-                    findNavController().navigate(QuizListFragmentDirections.actionQuizFragmentToQuizDescription(
-                        value))
+                    findNavController().navigate(QuizListFragmentDirections
+                        .actionQuizFragmentToQuizDescription(value))
                 }
             }
         )

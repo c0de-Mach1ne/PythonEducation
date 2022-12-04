@@ -1,7 +1,6 @@
 package com.example.simpleregistration.fragments.quiz.quiz_description
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,7 +21,6 @@ class QuizDescription : Fragment(R.layout.fragment_quiz_description) {
     private var currentIndex = -1
     private var countCurrentAnswers = 0
     private var selectAnswer = -1
-    private val questions = args.quiz.questions
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,8 +29,10 @@ class QuizDescription : Fragment(R.layout.fragment_quiz_description) {
     ): View {
         binding = FragmentQuizDescriptionBinding.inflate(layoutInflater, container, false)
         setAnswers()
+        binding.linearProgressBar.max = args.quiz.questions?.size ?: 0
         binding.btnAnswer.setOnClickListener {
-            if (currentQuestions < (questions?.size ?: 1) - 1) {
+            binding.linearProgressBar.progress = currentQuestions + 1
+            if (currentQuestions < (args.quiz.questions?.size ?: 1) - 1) {
                 selectRightAnswer()
                 checkRightAnswer()
                 currentQuestions++
@@ -41,7 +41,7 @@ class QuizDescription : Fragment(R.layout.fragment_quiz_description) {
                 checkRightAnswer()
                 Toast.makeText(binding.radioGroup.context,
                     "Поздравляю, ты ответил " +
-                            "правильно на $countCurrentAnswers из ${questions?.size}",
+                            "правильно на $countCurrentAnswers из ${args.quiz.questions?.size}",
                     Toast.LENGTH_SHORT).show()
             }
             setAnswers()
@@ -51,20 +51,18 @@ class QuizDescription : Fragment(R.layout.fragment_quiz_description) {
 
     private fun setAnswers() {
         with(binding) {
-            tvTitle.text = questions?.get(currentQuestions)?.questionText
-            rbAnswer1.text =
-                questions?.get(currentQuestions)?.answers?.get(0)?.description
-            rbAnswer2.text =
-                questions?.get(currentQuestions)?.answers?.get(1)?.description
-            rbAnswer3.text =
-                questions?.get(currentQuestions)?.answers?.get(2)?.description
-            rbAnswer4.text =
-                questions?.get(currentQuestions)?.answers?.get(3)?.description
+            tvTitle.text = args.quiz.questions?.get(currentQuestions)?.questionText
+            with(args.quiz.questions?.get(currentQuestions)?.answers) {
+                rbAnswer1.text = this?.get(0)?.description
+                rbAnswer2.text = this?.get(1)?.description
+                rbAnswer3.text = this?.get(2)?.description
+                rbAnswer4.text = this?.get(3)?.description
+            }
         }
     }
 
     private fun selectRightAnswer() {
-        questions?.get(currentQuestions)?.answers?.forEachIndexed { index, question ->
+        args.quiz.questions?.get(currentQuestions)?.answers?.forEachIndexed { index, question ->
             if (question.correctFlag == true) {
                 currentIndex = index
             }
@@ -72,12 +70,14 @@ class QuizDescription : Fragment(R.layout.fragment_quiz_description) {
     }
 
     private fun checkRightAnswer() {
-        when (binding.radioGroup.checkedRadioButtonId) {
-            R.id.rbAnswer_1 -> selectAnswer = 0
-            R.id.rbAnswer_2 -> selectAnswer = 1
-            R.id.rbAnswer_3 -> selectAnswer = 2
-            R.id.rbAnswer_4 -> selectAnswer = 3
+        selectAnswer = when (binding.radioGroup.checkedRadioButtonId) {
+            R.id.rbAnswer_1 -> 0
+            R.id.rbAnswer_2 -> 1
+            R.id.rbAnswer_3 -> 2
+            R.id.rbAnswer_4 -> 3
+            else -> -1
         }
+
         if (currentIndex == selectAnswer) {
             countCurrentAnswers++
         }
