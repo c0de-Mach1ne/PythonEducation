@@ -13,7 +13,7 @@ import com.example.simpleregistration.R
 import com.example.simpleregistration.databinding.FragmentContentBinding
 import com.example.simpleregistration.fragments.model.Guid
 import com.example.simpleregistration.utils.ItemClickListener
-import com.example.simpleregistration.utils.state_model.Loading
+import com.example.simpleregistration.utils.state_model.LoadingState
 
 class GuidListFragment : Fragment(R.layout.fragment_content) {
 
@@ -62,13 +62,13 @@ class GuidListFragment : Fragment(R.layout.fragment_content) {
 
         viewModel.uiState.observe(viewLifecycleOwner) {
             when (it) {
-                is Loading.Start -> {
+                is LoadingState.Start -> {
                     binding.progressBar.isVisible = true
                 }
-                is Loading.Stop -> {
+                is LoadingState.Stop -> {
                     binding.progressBar.isVisible = false
                 }
-                is Loading.Error -> {
+                is LoadingState.Error -> {
                     Toast.makeText(binding.root.context, it.message, Toast.LENGTH_SHORT).show()
                 }
             }

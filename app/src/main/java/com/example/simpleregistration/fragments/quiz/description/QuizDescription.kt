@@ -11,6 +11,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.simpleregistration.R
 import com.example.simpleregistration.databinding.FragmentQuizDescriptionBinding
+import com.example.simpleregistration.fragments.model.Result
+import com.example.simpleregistration.utils.state_model.UiState
 
 class QuizDescription : Fragment(R.layout.fragment_quiz_description) {
 
@@ -18,10 +20,15 @@ class QuizDescription : Fragment(R.layout.fragment_quiz_description) {
     private val viewModel by viewModels<QuizDescriptionViewModel> { QuizDescriptionViewModelFactory() }
     private val args by navArgs<QuizDescriptionArgs>()
 
-    private var currentQuestions = 0
-    private var currentIndex = -1
-    private var countCurrentAnswers = 0
-    private var selectAnswer = -1
+    private var fullName: String? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        // установили userIndex во вьюмодели
+        args.quiz.id?.let { viewModel.getUserIndex(it) }
+        // получили размер списка вопросов
+        viewModel.getQuestionSize(args.quiz.questions)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,34 +36,22 @@ class QuizDescription : Fragment(R.layout.fragment_quiz_description) {
         savedInstanceState: Bundle?,
     ): View {
         binding = FragmentQuizDescriptionBinding.inflate(layoutInflater, container, false)
-        setAnswers()
-        args.quiz.id?.let { viewModel.getUserIndex(it) }
-
-        binding.linearProgressBar.max = args.quiz.questions?.size ?: 0
+        viewModel.selectCurrentQuestion()
+        observeViewModel()
         binding.btnAnswer.setOnClickListener {
-            binding.linearProgressBar.progress = currentQuestions + 1
-            selectRightAnswer()
-            checkRightAnswer()
-            selectCurrentQuestion()
-            setAnswers()
+            // передали выбранный элемент
+            viewModel.selectAnswer(binding.radioGroup.checkedRadioButtonId)
+            // установили правильный ответ
+            viewModel.selectAnswer(args.quiz.questions)
+            // проверяем правильный ли текущий ответ
+            viewModel.checkAnswerIsCorrect()
+            // установили следующий вопрос
+            viewModel.selectCurrentQuestion()
         }
-
         return binding.root
     }
 
-    private fun selectCurrentQuestion() {
-        if (currentQuestions < (args.quiz.questions?.size ?: 1) - 1) {
-            currentQuestions++
-        } else {
-            Toast.makeText(binding.radioGroup.context,
-                "Поздравляю, ты ответил " +
-                        "правильно на $countCurrentAnswers из ${args.quiz.questions?.size}",
-                Toast.LENGTH_SHORT).show()
-            findNavController().navigate(R.id.action_quizDescription_to_quizResult)
-        }
-    }
-
-    private fun setAnswers() {
+    private fun setAnswers(currentQuestions: Int) {
         with(binding) {
             tvTitle.text = args.quiz.questions?.get(currentQuestions)?.questionText
             with(args.quiz.questions?.get(currentQuestions)?.answers) {
@@ -68,27 +63,37 @@ class QuizDescription : Fragment(R.layout.fragment_quiz_description) {
         }
     }
 
-    private fun selectRightAnswer() {
-        args.quiz.questions?.get(currentQuestions)?.answers?.forEachIndexed { index, question ->
-            if (question.correctFlag == true) {
-                currentIndex = index
+    private fun observeViewModel() {
+        viewModel.currentQuestion.observe(viewLifecycleOwner) { currentQuestion ->
+            binding.linearProgressBar.progress = currentQuestion
+            setAnswers(currentQuestion)
+        }
+
+        viewModel.uiState.observe(viewLifecycleOwner) {
+            when (it) {
+                is UiState.Success -> {
+                    Toast.makeText(binding.radioGroup.context,
+                        "Поздравляю, ты ответил правильно на ${it.data}% вопросов",
+                        Toast.LENGTH_SHORT).show()
+
+                    viewModel.pushResult(result = Result(name = fullName, result = it.data.toInt()),
+                        quizId = args.quiz.id)
+
+                    findNavController().navigate(R.id.action_quizDescription_to_quizResult)
+                }
+                else -> {
+                    Toast.makeText(binding.radioGroup.context,
+                        "Something wrong!", Toast.LENGTH_SHORT).show()
+                }
             }
         }
-    }
 
-    private fun checkRightAnswer() {
-        selectAnswer = when (binding.radioGroup.checkedRadioButtonId) {
-            R.id.rbAnswer_1 -> 0
-            R.id.rbAnswer_2 -> 1
-            R.id.rbAnswer_3 -> 2
-            R.id.rbAnswer_4 -> 3
-            else -> -1
+        viewModel.questionSize.observe(viewLifecycleOwner) {
+            binding.linearProgressBar.max = it - 1
         }
 
-        if (currentIndex == selectAnswer && countCurrentAnswers < (args.quiz.questions?.size
-                ?: 0)
-        ) {
-            countCurrentAnswers++
+        viewModel.fullName.observe(viewLifecycleOwner) {
+            fullName = it
         }
     }
 }

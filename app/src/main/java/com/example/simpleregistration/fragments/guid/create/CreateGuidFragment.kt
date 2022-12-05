@@ -11,7 +11,7 @@ import androidx.fragment.app.viewModels
 import com.example.simpleregistration.R
 import com.example.simpleregistration.databinding.FragmentCreateGuidBinding
 import com.example.simpleregistration.fragments.model.Guid
-import com.example.simpleregistration.utils.state_model.Loading
+import com.example.simpleregistration.utils.state_model.LoadingState
 import kotlin.random.Random
 
 class CreateGuidFragment : Fragment(R.layout.fragment_create_guid) {
@@ -49,13 +49,13 @@ class CreateGuidFragment : Fragment(R.layout.fragment_create_guid) {
     private fun observeViewModel() {
         viewModel.uiState.observe(viewLifecycleOwner) {
             when (it) {
-                is Loading.Start -> {
+                is LoadingState.Start -> {
                     binding.progressBar.isVisible = true
                 }
-                is Loading.Stop -> {
+                is LoadingState.Stop -> {
                     binding.progressBar.isVisible = false
                 }
-                is Loading.Error -> {
+                is LoadingState.Error -> {
                     Toast.makeText(binding.root.context, it.message, Toast.LENGTH_SHORT).show()
                 }
             }
