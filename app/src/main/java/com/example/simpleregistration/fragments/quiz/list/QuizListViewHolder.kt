@@ -1,4 +1,4 @@
-package com.example.simpleregistration.fragments.quiz
+package com.example.simpleregistration.fragments.quiz.list
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.simpleregistration.databinding.QuizItemBinding

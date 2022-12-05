@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/quizFragment"
-        android:name="com.example.simpleregistration.fragments.quiz.quiz_list.QuizListFragment"
+        android:name="com.example.simpleregistration.fragments.quiz.list.QuizListFragment"
         android:label="Quiz" >
         <action
             android:id="@+id/action_quizFragment_to_quizDescription"
@@ -14,10 +14,20 @@
     </fragment>
     <fragment
         android:id="@+id/quizDescription"
-        android:name="com.example.simpleregistration.fragments.quiz.quiz_description.QuizDescription"
+        android:name="com.example.simpleregistration.fragments.quiz.description.QuizDescription"
         android:label="QuizDescription" >
         <argument
             android:name="quiz"
             app:argType="com.example.simpleregistration.fragments.model.Quiz" />
+        <action
+            android:id="@+id/action_quizDescription_to_quizResult"
+            app:destination="@id/quizResult"
+            app:launchSingleTop="false"
+            app:popUpTo="@id/quizFragment"
+            app:popUpToInclusive="false" />
     </fragment>
+    <fragment
+        android:id="@+id/quizResult"
+        android:name="com.example.simpleregistration.fragments.quiz.result.QuizResult"
+        android:label="QuizResult" />
 </navigation>

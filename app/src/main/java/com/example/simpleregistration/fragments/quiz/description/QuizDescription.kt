@@ -1,4 +1,4 @@
-package com.example.simpleregistration.fragments.quiz.quiz_description
+package com.example.simpleregistration.fragments.quiz.description
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.simpleregistration.R
 import com.example.simpleregistration.databinding.FragmentQuizDescriptionBinding
@@ -29,22 +30,20 @@ class QuizDescription : Fragment(R.layout.fragment_quiz_description) {
     ): View {
         binding = FragmentQuizDescriptionBinding.inflate(layoutInflater, container, false)
         setAnswers()
+
         binding.linearProgressBar.max = args.quiz.questions?.size ?: 0
         binding.btnAnswer.setOnClickListener {
             binding.linearProgressBar.progress = currentQuestions + 1
             selectRightAnswer()
             checkRightAnswer()
             if (currentQuestions < (args.quiz.questions?.size ?: 1) - 1) {
-//                selectRightAnswer()
-//                checkRightAnswer()
                 currentQuestions++
             } else {
-//                selectRightAnswer()
-//                checkRightAnswer()
                 Toast.makeText(binding.radioGroup.context,
                     "Поздравляю, ты ответил " +
                             "правильно на $countCurrentAnswers из ${args.quiz.questions?.size}",
                     Toast.LENGTH_SHORT).show()
+                findNavController().navigate(R.id.action_quizDescription_to_quizResult)
             }
             setAnswers()
         }

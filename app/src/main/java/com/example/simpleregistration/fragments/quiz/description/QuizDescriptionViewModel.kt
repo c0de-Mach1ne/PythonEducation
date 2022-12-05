@@ -1,4 +1,4 @@
-package com.example.simpleregistration.fragments.quiz.quiz_description
+package com.example.simpleregistration.fragments.quiz.description
 
 import androidx.lifecycle.ViewModel
 import com.example.simpleregistration.fragments.repository.DataRepository

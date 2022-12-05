@@ -1,4 +1,4 @@
-package com.example.simpleregistration.fragments.quiz
+package com.example.simpleregistration.fragments.quiz.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

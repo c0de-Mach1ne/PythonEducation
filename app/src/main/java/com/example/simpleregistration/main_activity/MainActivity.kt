@@ -193,7 +193,7 @@ class MainActivity : AppCompatActivity() {
 
         val dataRepository = DataRepository()
 
-            quizList.forEach {
+        quizList.forEach {
                 dataRepository.pushQuiz(it).addOnSuccessListener {
                     Log.d("TAG", "Quiz push success")
                 }

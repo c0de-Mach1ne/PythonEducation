@@ -1,4 +1,4 @@
-package com.example.simpleregistration.fragments.quiz.quiz_list
+package com.example.simpleregistration.fragments.quiz.list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
