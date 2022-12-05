@@ -30,24 +30,30 @@ class QuizDescription : Fragment(R.layout.fragment_quiz_description) {
     ): View {
         binding = FragmentQuizDescriptionBinding.inflate(layoutInflater, container, false)
         setAnswers()
+        args.quiz.id?.let { viewModel.getUserIndex(it) }
 
         binding.linearProgressBar.max = args.quiz.questions?.size ?: 0
         binding.btnAnswer.setOnClickListener {
             binding.linearProgressBar.progress = currentQuestions + 1
             selectRightAnswer()
             checkRightAnswer()
-            if (currentQuestions < (args.quiz.questions?.size ?: 1) - 1) {
-                currentQuestions++
-            } else {
-                Toast.makeText(binding.radioGroup.context,
-                    "Поздравляю, ты ответил " +
-                            "правильно на $countCurrentAnswers из ${args.quiz.questions?.size}",
-                    Toast.LENGTH_SHORT).show()
-                findNavController().navigate(R.id.action_quizDescription_to_quizResult)
-            }
+            selectCurrentQuestion()
             setAnswers()
         }
+
         return binding.root
+    }
+
+    private fun selectCurrentQuestion() {
+        if (currentQuestions < (args.quiz.questions?.size ?: 1) - 1) {
+            currentQuestions++
+        } else {
+            Toast.makeText(binding.radioGroup.context,
+                "Поздравляю, ты ответил " +
+                        "правильно на $countCurrentAnswers из ${args.quiz.questions?.size}",
+                Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_quizDescription_to_quizResult)
+        }
     }
 
     private fun setAnswers() {
@@ -79,7 +85,9 @@ class QuizDescription : Fragment(R.layout.fragment_quiz_description) {
             else -> -1
         }
 
-        if (currentIndex == selectAnswer && countCurrentAnswers < (args.quiz.questions?.size ?: 0)) {
+        if (currentIndex == selectAnswer && countCurrentAnswers < (args.quiz.questions?.size
+                ?: 0)
+        ) {
             countCurrentAnswers++
         }
     }

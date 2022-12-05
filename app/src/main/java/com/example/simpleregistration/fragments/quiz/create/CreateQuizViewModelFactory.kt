@@ -1,14 +1,14 @@
-package com.example.simpleregistration.fragments.quiz.description
+package com.example.simpleregistration.fragments.quiz.create
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.simpleregistration.fragments.repository.DataRepository
 
-class QuizDescriptionViewModelFactory : ViewModelProvider.Factory {
+class CreateQuizViewModelFactory : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(QuizDescriptionViewModel::class.java)) {
+        if (modelClass.isAssignableFrom(CreateQuizViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return QuizDescriptionViewModel(repo = DataRepository()) as T
+            return CreateQuizViewModel(repo = DataRepository()) as T
         }
         throw IllegalArgumentException("UNKNOWN VIEW MODEL CLASS")
     }
