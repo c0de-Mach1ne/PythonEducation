@@ -1,4 +1,4 @@
-package com.example.simpleregistration.fragments.guid.guid_list
+package com.example.simpleregistration.fragments.guid.list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

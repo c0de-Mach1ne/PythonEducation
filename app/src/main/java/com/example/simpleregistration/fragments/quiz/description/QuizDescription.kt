@@ -19,7 +19,6 @@ class QuizDescription : Fragment(R.layout.fragment_quiz_description) {
     private lateinit var binding: FragmentQuizDescriptionBinding
     private val viewModel by viewModels<QuizDescriptionViewModel> { QuizDescriptionViewModelFactory() }
     private val args by navArgs<QuizDescriptionArgs>()
-
     private var fullName: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +27,8 @@ class QuizDescription : Fragment(R.layout.fragment_quiz_description) {
         args.quiz.id?.let { viewModel.getUserIndex(it) }
         // получили размер списка вопросов
         viewModel.getQuestionSize(args.quiz.questions)
+        // установили текущий вопрос
+        viewModel.selectCurrentQuestion()
     }
 
     override fun onCreateView(
@@ -36,8 +37,8 @@ class QuizDescription : Fragment(R.layout.fragment_quiz_description) {
         savedInstanceState: Bundle?,
     ): View {
         binding = FragmentQuizDescriptionBinding.inflate(layoutInflater, container, false)
-        viewModel.selectCurrentQuestion()
         observeViewModel()
+
         binding.btnAnswer.setOnClickListener {
             // передали выбранный элемент
             viewModel.selectAnswer(binding.radioGroup.checkedRadioButtonId)
@@ -48,10 +49,11 @@ class QuizDescription : Fragment(R.layout.fragment_quiz_description) {
             // установили следующий вопрос
             viewModel.selectCurrentQuestion()
         }
+
         return binding.root
     }
 
-    private fun setAnswers(currentQuestions: Int) {
+    private fun setQuiz(currentQuestions: Int) {
         with(binding) {
             tvTitle.text = args.quiz.questions?.get(currentQuestions)?.questionText
             with(args.quiz.questions?.get(currentQuestions)?.answers) {
@@ -64,9 +66,10 @@ class QuizDescription : Fragment(R.layout.fragment_quiz_description) {
     }
 
     private fun observeViewModel() {
+
         viewModel.currentQuestion.observe(viewLifecycleOwner) { currentQuestion ->
             binding.linearProgressBar.progress = currentQuestion
-            setAnswers(currentQuestion)
+            setQuiz(currentQuestion)
         }
 
         viewModel.uiState.observe(viewLifecycleOwner) {

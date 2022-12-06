@@ -1,4 +1,4 @@
-package com.example.simpleregistration.fragments.guid.guid_description
+package com.example.simpleregistration.fragments.guid.description
 
 import android.os.Bundle
 import android.view.LayoutInflater

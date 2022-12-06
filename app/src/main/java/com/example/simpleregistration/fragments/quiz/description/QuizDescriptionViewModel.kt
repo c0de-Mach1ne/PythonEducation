@@ -31,11 +31,11 @@ class QuizDescriptionViewModel(
     var fullName: LiveData<String> = _fullName
 
     private var currentQuestions = -1
-    private var currentIndex = -1
-    private var countCurrentAnswers = 0
+    private var indexCorrectAnswer = -1
+    private var countCorrectAnswers = 0
     private var selectAnswer = -1
-    private var childrenCount: Long = -1
-    private var questSize = 0
+    private var indexLastAnswer: Long = -1
+    private var questSize = -1
 
     fun getQuestionSize(questions: List<QuizQuestions>?) {
         questSize = questions?.size ?: -1
@@ -54,15 +54,13 @@ class QuizDescriptionViewModel(
 
     fun selectAnswer(questions: List<QuizQuestions>?) {
         questions?.get(currentQuestions)?.answers?.forEachIndexed { index, question ->
-            if (question.correctFlag == true) {
-                currentIndex = index
-            }
+            if (question.correctFlag == true) indexCorrectAnswer = index
         }
     }
 
     fun checkAnswerIsCorrect() {
-        if (currentIndex == selectAnswer && countCurrentAnswers < questSize) {
-            countCurrentAnswers++
+        if (indexCorrectAnswer == selectAnswer && countCorrectAnswers < questSize) {
+            countCorrectAnswers++
         }
     }
 
@@ -71,7 +69,8 @@ class QuizDescriptionViewModel(
             currentQuestions++
             _currentQuestion.value = currentQuestions
         } else {
-            _uiState.value = UiState.Success(((countCurrentAnswers / currentQuestions ) * 100).toString())
+            _uiState.value =
+                UiState.Success(((countCorrectAnswers.toFloat() / questSize.toFloat()) * 100).toString())
         }
     }
 
@@ -79,19 +78,21 @@ class QuizDescriptionViewModel(
         repo.pushResult(
             result = result,
             quizId = quizId.toString(),
-            userIndex = childrenCount.toString())
+            userIndex = indexLastAnswer.toString())
     }
 
     fun getUserIndex(quizId: Int) {
         repo.getResultList("$quizId").addOnSuccessListener {
-            childrenCount = it.childrenCount
+            indexLastAnswer = it.childrenCount
         }
     }
 
     private fun getUserFullName() {
         repo.getDatabaseUser()?.addOnSuccessListener {
-            val user = it.getValue(UserPersonalInfo::class.java)
-            if(user != null) _fullName.value = "${user.sureName} ${user.name} ${user.patronymic}"
+            with(it.getValue(UserPersonalInfo::class.java)) {
+                if (this != null) _fullName.value =
+                    "${this.sureName} ${this.name} ${this.patronymic}"
+            }
         }
     }
 }
